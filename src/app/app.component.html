@@ -1,0 +1,56 @@
+<nav class="red lighten-2">
+  <div class="container nav-wrapper">
+    <a routerLink="" class="brand-logo">{{ name }}</a>
+    <a href="" data-activates="mobile-nav" materialize="sideNav" class="button-collapse">
+      <i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a routerLink="" >Home<i class="material-icons left">home</i></a></li>
+      <li routerLinkActive="active" ><a routerLink="about-me">About me<i class="material-icons left">person</i></a></li>
+      <li routerLinkActive="active" ><a routerLink="blog">Blog<i class="material-icons left">web</i></a></li>
+      <li onclick="$('.modal').modal();"><a href="#contact-modal" class="modal-trigger">Contact<i class="material-icons left">mail_outline</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="side-nav" id="mobile-nav"> 
+  <li onclick="$('.button-collapse').sideNav('show');"><a routerLink="" >Home<i class="material-icons left">home</i></a></li>
+  <li onclick="$('.button-collapse').sideNav('show');"><a routerLink="about-me">About me<i class="material-icons left">person</i></a></li>
+  <li onclick="$('.button-collapse').sideNav('show');"><a routerLink="blog">Blog<i class="material-icons left">web</i></a></li>
+  <li onclick="$('.button-collapse').sideNav('show');$('.modal').modal();">
+    <a href="#contact-modal" class="modal-trigger">Contact<i class="material-icons left">mail_outline</i></a>
+  </li>
+  <hr>
+</ul>
+
+<main>
+<div id="one">
+<router-outlet></router-outlet>
+</div>
+
+ <!-- Modal contact-->
+ <app-contact></app-contact>
+</main>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">
+          You can use rows and columns here to organize your footer content.
+        </p>
+      </div>
+      
+      <!---social media-->
+      <app-social-media></app-social-media>
+
+  </div>
+    </div>
+  <div class="footer-copyright red lighten-1">
+    <div class="container">
+    © 2018
+    <a class="grey-text text-lighten-4 right" target="_blank" href="https://www.instagram.com/gabrielpadov/">
+        developer: @gabrielpadov</a>
+    </div>
+  </div>
+</footer>

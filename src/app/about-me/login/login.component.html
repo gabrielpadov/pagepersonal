@@ -1,0 +1,20 @@
+<h5>login</h5>
+
+<div class="row">
+    <div class="input-field col s6">
+      <input [(ngModel)]="user.name" id="user" type="text" class="validate">
+      <label class="active" for="user">User</label>
+    </div>
+  </div>
+  <div class="row">
+      <div class="input-field col s6">
+        <input [(ngModel)]="user.password" id="password" type="password" class="validate">
+        <label class="active" for="password">Password</label>
+      </div>
+  </div>
+  <button class="waves-effect waves-light btn" type="submit" (click)="login()">Login</button>
+
+
+  <p *ngIf="liberateEdit">
+    Login ok!
+</p>

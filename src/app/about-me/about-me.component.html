@@ -1,0 +1,42 @@
+<div class="container">
+<p>
+  about-me works!
+
+<a class="waves-effect waves-light btn" routerLink="login" >button</a>
+</p>
+<p *ngIf="liberateEdit">
+  Login ok!
+</p>
+
+<router-outlet></router-outlet>
+
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Modal</a>
+ 
+<!-- Modal Structure -->
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h5>login</h5>
+      <div class="row">
+          <div class="input-field col s6">
+            <input [(ngModel)]="user.name" id="user" type="text" class="validate">
+            <label class="active" for="user">User</label>
+          </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <input [(ngModel)]="user.password" id="password" type="password" class="validate">
+              <label class="active" for="password">Password</label>
+            </div>
+        </div>
+        <!--<button class="waves-effect waves-light btn" type="submit" (click)="login()">Login</button>-->
+
+  </div>
+   <div class="modal-footer">
+    <button class="waves-effect waves-light btn-flat" (click)="closeModal()">Cancel</button>
+    <button class="modal-action modal-close waves-effect waves-green btn" type="submit" (click)="login()">Login</button>
+   </div>
+</div>
+
+
+</div>
