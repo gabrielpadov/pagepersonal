@@ -12,12 +12,7 @@ export class SocialMediaComponent implements OnInit {
 
   constructor(private socialMediaService: SocialMediaService) {
 
-    /*for(let i=0;this.medias.length;i++){
-      let media = this.medias[i];
-    }*/
 
-    //var servico = new SocialMediaService();
-  
     this.medias = this.socialMediaService.getSocialMedia();
   }
 

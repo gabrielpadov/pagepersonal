@@ -1,24 +1,8 @@
 <!--https://terrymooreii.github.io/materialize-social/-->
 <div class="col l4 offset-l2 s12">
     <h5 class="white-text">Social media</h5>
-   
-    <a class="btn-floating btn-small waves-effect waves-light red">
-        <i class="fa fa-yahoo"></i></a>
-    <a class="btn-floating btn-small waves-effect waves-light blue">
-        <i class="fa fa-yahoo"></i></a>
-    <a class="btn-floating btn-small waves-effect waves-light blue">
-        <i class="fa fa-yahoo"></i></a>
-    <a class="btn-floating btn-small waves-effect waves-light blue">
-        <i class="fa fa-yahoo"></i></a>
-    <a class="btn-floating btn-small waves-effect waves-light blue">
-            <i class="fa fa-yahoo"></i></a>
+
+<a *ngFor="let media of medias" class="waves-effect waves-light btn-floating social {{ media }}">
+      <i class="fa fa-{{ media }}"></i></a>
 
 </div>
-
-
-<ul>
-    <li *ngFor="let media of medias" > <a class="btn-floating btn-small waves-effect waves-light red">
-            <i class="fa fa-twitter"></i></a>
-        {{ media }}
-    </li>
-</ul>

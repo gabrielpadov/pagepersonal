@@ -7,7 +7,11 @@ export class SocialMediaService {
 
   constructor() { }
 
-  getSocialMedia(){
-    return ['Java','Ruby','CSS'];
+  getSocialMedia() {
+    return ['twitter', 'youtube', 'steam',
+            'reddit', 'dropbox', 'linkedin',
+            'instagram', 'github', 'facebook',
+            'spotify', 'slack', 'bitbucket'];
   }
 }
+

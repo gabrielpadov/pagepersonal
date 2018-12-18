@@ -9,14 +9,14 @@ import { AuthGuard } from './guards/auth.guard';
 import { FormComponent } from './about-me/form/form.component';
 
 const routes: Routes = [
-  { path:"", component: HomeComponent },
-  { path:"blog", component: BlogComponent,
+  { path: '', component: HomeComponent },
+  { path: 'blog', component: BlogComponent,
     canActivate: [AuthGuard] },
-  { path:"about-me", component: AboutMeComponent, children: [
-    { path:"login", component: LoginComponent },
-    { path:"form", component: FormComponent }
+  { path: 'about-me', component: AboutMeComponent, children: [
+    { path: 'login', component: LoginComponent },
+    { path: 'form', component: FormComponent }
   ] },
-  { path:"**", component: PagenotfoundComponent } 
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

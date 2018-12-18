@@ -10,7 +10,7 @@ import { toast } from 'angular2-materialize';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   private userAuth: boolean = false;
 
   liberateEdit = new EventEmitter<boolean>();

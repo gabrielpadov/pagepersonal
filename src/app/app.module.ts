@@ -21,9 +21,6 @@ import { ContactComponent } from './contact/contact.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { SocialMediaService } from './social-media/social-media.service';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +31,7 @@ import { SocialMediaService } from './social-media/social-media.service';
     LoginComponent,
     FormComponent,
     ContactComponent,
-    SocialMediaComponent  
+    SocialMediaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +41,6 @@ import { SocialMediaService } from './social-media/social-media.service';
     BrowserAnimationsModule,
     NgbModule,
     FormsModule
-     
   ],
   providers: [
     AuthService,
