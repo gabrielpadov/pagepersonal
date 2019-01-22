@@ -7,15 +7,21 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './about-me/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FormComponent } from './about-me/form/form.component';
+import { FeedComponent } from './blog/feed/feed.component';
+import { PublisherComponent } from './blog/publisher/publisher.component';
+import { PostComponent } from './blog/post/post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'blog', component: BlogComponent,
-    canActivate: [AuthGuard] },
+  { path: 'blog', component: BlogComponent, canActivate: [AuthGuard], children: [
+    { path: 'publisher', component: PublisherComponent },
+    { path: 'feed', component: FeedComponent },
+    { path: 'post', component: PostComponent }
+  ]},
   { path: 'about-me', component: AboutMeComponent, children: [
     { path: 'login', component: LoginComponent },
     { path: 'form', component: FormComponent }
-  ] },
+  ]},
   { path: '**', component: PagenotfoundComponent }
 ];
 
