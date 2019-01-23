@@ -1,13 +1,14 @@
 
-
+<article>
+  <section>
 <div class="row">
       <div class="container">
           <hr class="red darken-2"><br>
-        <div class="col s5 m4">
-             <img src="../../assets/images/person.jpg" class="circle responsive-img"> <!-- notice the "circle" class -->        
+        <div class="col s8 m4 l4">
+             <img src="../../assets/images/person.jpg" class="circle responsive-img"> <!-- notice the "circle" class -->
         </div>
-        <div class="col s7 m8">
-           <div routerLink="about-me" class="card red lighten-1">
+        <div class="col s12 m8 l8">
+           <div routerLink="about-me" class="card red lighten-1 z-depth-5">
             <div class="card-content white-text">
               <span class="card-title">About me</span>
               <p>{{ aboutMe }}</p>
@@ -16,17 +17,18 @@
         </div>
       </div>
   </div>
-
+</section><section>
   <div class="row">
   <div class="container left-align">
       <hr class="red darken-2">
       <h4 class="black-text position-name">
           {{ name }}
-        </h4> 
+        </h4>
         <h6>{{ career }}</h6>
       <div class="col s12 m12">
-          
+
         </div>
   </div>
   </div>
-
+</section>
+</article>
