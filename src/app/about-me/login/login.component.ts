@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
-import { User } from './user';
+import { User } from '../../datasource/user';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    //console.log(this.user);
+  login() {
+    // console.log(this.user);
     this.authService.login(this.user);
   }
 }

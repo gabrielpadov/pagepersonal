@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { User } from './user';
+import { User } from '../../datasource/user';
 import { Router } from '@angular/router';
 import { toast } from 'angular2-materialize';
 
@@ -23,8 +23,7 @@ export class AuthService {
       this.liberateEdit.emit(true);
       this.router.navigate(['about-me/form']);
       toast('Great!', 4000);
-    }
-    else{
+    } else {
       this.userAuth = false;
       this.liberateEdit.emit(false);
       //this.router.navigate(['/']);

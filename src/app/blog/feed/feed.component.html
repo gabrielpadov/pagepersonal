@@ -1,0 +1,8 @@
+<h6>other posts</h6>
+<hr>
+<a *ngFor="let post of posts" href="#">
+  <p-card header="{{ post.title }}" subheader="{{ post.date }}" >
+    <div>{{ post.id }} - {{ post.preview }}</div>
+  </p-card>
+  <br>
+</a>

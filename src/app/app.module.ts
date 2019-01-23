@@ -20,6 +20,12 @@ import { FormComponent } from './about-me/form/form.component';
 import { ContactComponent } from './contact/contact.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { SocialMediaService } from './social-media/social-media.service';
+import { FeedComponent } from './blog/feed/feed.component';
+import { PublisherComponent } from './blog/publisher/publisher.component';
+import {EditorModule} from 'primeng/editor';
+import { PostComponent } from './blog/post/post.component';
+import {CardModule} from 'primeng/card';
+import { FeedService } from './blog/feed/feed.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,10 @@ import { SocialMediaService } from './social-media/social-media.service';
     LoginComponent,
     FormComponent,
     ContactComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    FeedComponent,
+    PublisherComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -40,13 +49,16 @@ import { SocialMediaService } from './social-media/social-media.service';
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    EditorModule,
+    CardModule
   ],
   providers: [
     AuthService,
     AuthGuard,
     AboutMeGuard,
-    SocialMediaService
+    SocialMediaService,
+    FeedService
     ],
   bootstrap: [AppComponent]
 })

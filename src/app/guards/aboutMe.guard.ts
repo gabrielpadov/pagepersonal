@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class AboutMeGuard implements CanActivateChild{
+export class AboutMeGuard implements CanActivateChild {
     	canActivateChild(
             route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot

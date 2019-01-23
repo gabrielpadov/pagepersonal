@@ -1,12 +1,32 @@
-<div class="container">
-  <p>
-  blog works!
-</p>
-<p *ngIf="liberateEdit">
+<div class="row">
+  <div class="col s1"></div>
+  <div class="col s8">
+      <nav>
+          <div class="nav-wrapper">
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#"><i class="material-icons">view_headline</i></a></li>
+              <li><a href="#"><i class="material-icons">view_comfy</i></a></li>
+            </ul>
+          </div>
+        </nav>
+    <p>
+      blog works!
+    </p>
+    <app-post></app-post>
+  </div>
+  <div class="col s2">
+    <app-feed></app-feed>
+  </div>
+  <div class="col s1"></div>
+</div>
+
+
+
+<<!--p *ngIf="liberateEdit">
     Login ok!
 </p>
 
-</div>
+
 <nav *ngIf="liberateEdit" class="red lighten-2">
   <div class="container nav-wrapper">
     <a routerLink="" class="brand-logo">{{ name }}</a>
@@ -15,8 +35,9 @@
       <li routerLinkActive="active" ><a routerLink="about-me">About me</a></li>
       <li routerLinkActive="active" ><a routerLink="blog">Blog</a></li>
       <li>
-          <button *ngIf="liberateEdit" class="waves-effect waves-light btn blue" type="submit" (click)="logout()">Logout</button>    
+          <button *ngIf="liberateEdit" class="waves-effect waves-light btn blue" type="submit" (click)="logout()">Logout</button>
       </li>
     </ul>
   </div>
-</nav>
+</nav-->
+

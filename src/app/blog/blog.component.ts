@@ -8,15 +8,15 @@ import { AuthService } from '../about-me/login/auth.service';
 })
 export class BlogComponent implements OnInit {
 
-  liberateEdit: boolean = false;
-  constructor(private authService: AuthService){
+  liberateEdit = false;
+  constructor(private authService: AuthService) {
 
   }
 
-  ngOnInit(){
-    this.authService.liberateEdit.subscribe(
-      showUp => this.liberateEdit = showUp
-    );
+  ngOnInit() {
+   // this.authService.liberateEdit.subscribe(
+   //   showUp => this.liberateEdit = showUp
+  //  );
   }
 
 }
