@@ -9,6 +9,7 @@ import { AuthService } from '../about-me/login/auth.service';
 export class BlogComponent implements OnInit {
 
   showBlog = true;
+
   liberateEdit = false;
   constructor(private authService: AuthService) {
 

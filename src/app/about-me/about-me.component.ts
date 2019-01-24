@@ -27,7 +27,7 @@ export class AboutMeComponent implements OnInit {
 
   login(){
     this.closeModal();
-    //console.log(this.user);
+    // console.log(this.user);
     this.authService.login(this.user);
   }
 

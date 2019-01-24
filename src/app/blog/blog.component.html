@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col l1 xl1"></div>
-  <div class="col s12 m12 l8 xl8">
+  <div class="col s12 m12 l9 xl9">
     <section>
       <a class="btn-floating btn-small waves-effect waves-light" (click)="toggleShowBlog()" *ngIf="showBlog">
         <i class="material-icons">view_headline</i></a>
@@ -12,26 +12,20 @@
     </section>
 
     <section>
-      <p>
-        blog works!
-      </p>
 
-      <app-post *ngIf="!showBlog"></app-post>
+      <app-list-post *ngIf="!showBlog"></app-list-post>
 
       <app-card *ngIf="showBlog"></app-card>
-      <app-feed *ngIf="showBlog"></app-feed>
-
 
     </section>
+
   </div>
 
   <div class="col s12 m12 l2 xl2" *ngIf="!showBlog">
     <app-feed></app-feed>
   </div>
-  <div class="col l1 xl1"></div>
+
 </div>
-
-
 
 <!--p *ngIf="liberateEdit">
     Login ok!

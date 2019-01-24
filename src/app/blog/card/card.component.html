@@ -1,3 +1,25 @@
-<p>
-  card works!
-</p>
+<div class="p-grid">
+  <div class="p-col-12 p-md-4 p-lg-4" *ngFor="let post of posts" >
+
+    <div class="card sticky-action" >
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="./../../../assets/images/book.jpg">
+      </div>
+      <div class="card-content">
+        <span class="flow-text card-title activator grey-text text-darken-4">{{ post.title | slice:0:50 }}{{ post.title.length >= 50 ? '...' : '' }}
+          <i class="material-icons right">more_vert</i></span>
+          <br>
+          <p>{{ post.date }}</p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ post.title | slice:0:50 }}{{ post.title.length >= 50 ? '...' : '' }}
+          <i class="material-icons right">close</i></span>
+        <p>{{ post.id }} - {{ post.preview }}</p>
+      </div>
+      <div class="card-action">
+          <button pButton type="button" label="Open" class="ui-button-raised" routerLink="post"></button>
+      </div>
+    </div>
+
+  </div>
+ </div>

@@ -19,6 +19,7 @@ export class AppComponent {
 
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.authService.liberateEdit.subscribe(
       showUp => this.liberateEdit = showUp

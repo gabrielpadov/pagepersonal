@@ -27,6 +27,8 @@ import { PostComponent } from './blog/post/post.component';
 import {CardModule} from 'primeng/card';
 import { CardComponent } from './blog/card/card.component';
 import { BlogService } from './blog/blog.service';
+import {ButtonModule} from 'primeng/button';
+import { ListPostComponent } from './blog/list-post/list-post.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { BlogService } from './blog/blog.service';
     FeedComponent,
     PublisherComponent,
     PostComponent,
-    CardComponent
+    CardComponent,
+    ListPostComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { BlogService } from './blog/blog.service';
     NgbModule,
     FormsModule,
     EditorModule,
-    CardModule
+    CardModule,
+    ButtonModule
   ],
   providers: [
     AuthService,
