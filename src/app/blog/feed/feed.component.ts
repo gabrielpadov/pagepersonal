@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedService } from './feed.service';
+import { BlogService } from './../blog.service';
 
 @Component({
   selector: 'app-feed',
@@ -10,9 +10,9 @@ export class FeedComponent implements OnInit {
 
   posts = [];
 
-  constructor(private feedService: FeedService) {
+  constructor(private blogService: BlogService) {
 
-    this.posts = this.feedService.getFeed();
+    this.posts = this.blogService.getList();
     console.log(this.posts);
   }
 

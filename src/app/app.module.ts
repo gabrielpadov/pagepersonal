@@ -25,7 +25,8 @@ import { PublisherComponent } from './blog/publisher/publisher.component';
 import {EditorModule} from 'primeng/editor';
 import { PostComponent } from './blog/post/post.component';
 import {CardModule} from 'primeng/card';
-import { FeedService } from './blog/feed/feed.service';
+import { CardComponent } from './blog/card/card.component';
+import { BlogService } from './blog/blog.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FeedService } from './blog/feed/feed.service';
     SocialMediaComponent,
     FeedComponent,
     PublisherComponent,
-    PostComponent
+    PostComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { FeedService } from './blog/feed/feed.service';
     AuthGuard,
     AboutMeGuard,
     SocialMediaService,
-    FeedService
+    BlogService
     ],
   bootstrap: [AppComponent]
 })

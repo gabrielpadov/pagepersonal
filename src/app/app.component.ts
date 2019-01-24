@@ -13,7 +13,7 @@ export class AppComponent {
   title_footer = 'Footer Content';
   text_footer = 'You can use rows and columns here to organize your footer content.';
 
-  liberateEdit: boolean = false;
+  liberateEdit = false;
 
   constructor(private authService: AuthService, private el: ElementRef) {
 

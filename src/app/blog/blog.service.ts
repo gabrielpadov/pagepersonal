@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 
-export class FeedService {
+export class BlogService {
 
   constructor() { }
 
-  getFeed() {
+  getList() {
     return [
       // tslint:disable-next-line:max-line-length
       {'id': '1', 'title': 'Lorem ipsum dolor sit amet', 'date': '01/01/2019', 'preview': 'Vestibulum placeratVestibulum placerat posuere urna vel scelerisque.'},

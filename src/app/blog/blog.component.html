@@ -1,28 +1,39 @@
 <div class="row">
-  <div class="col s1"></div>
-  <div class="col s8">
-      <nav>
-          <div class="nav-wrapper">
-            <ul class="right hide-on-med-and-down">
-              <li><a href="#"><i class="material-icons">view_headline</i></a></li>
-              <li><a href="#"><i class="material-icons">view_comfy</i></a></li>
-            </ul>
-          </div>
-        </nav>
-    <p>
-      blog works!
-    </p>
-    <app-post></app-post>
+  <div class="col l1 xl1"></div>
+  <div class="col s12 m12 l8 xl8">
+    <section>
+      <a class="btn-floating btn-small waves-effect waves-light" (click)="toggleShowBlog()" *ngIf="showBlog">
+        <i class="material-icons">view_headline</i></a>
+      <a class="btn-floating btn-small waves-effect waves-light" (click)="toggleShowBlog()" *ngIf="!showBlog">
+        <i class="material-icons">view_comfy</i></a>
+      <a class="btn-floating btn-small waves-effect waves-light">
+        <i class="material-icons">edit</i></a>
+      <hr>
+    </section>
+
+    <section>
+      <p>
+        blog works!
+      </p>
+
+      <app-post *ngIf="!showBlog"></app-post>
+
+      <app-card *ngIf="showBlog"></app-card>
+      <app-feed *ngIf="showBlog"></app-feed>
+
+
+    </section>
   </div>
-  <div class="col s2">
+
+  <div class="col s12 m12 l2 xl2" *ngIf="!showBlog">
     <app-feed></app-feed>
   </div>
-  <div class="col s1"></div>
+  <div class="col l1 xl1"></div>
 </div>
 
 
 
-<<!--p *ngIf="liberateEdit">
+<!--p *ngIf="liberateEdit">
     Login ok!
 </p>
 

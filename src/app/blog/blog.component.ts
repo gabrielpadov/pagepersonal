@@ -8,6 +8,7 @@ import { AuthService } from '../about-me/login/auth.service';
 })
 export class BlogComponent implements OnInit {
 
+  showBlog = true;
   liberateEdit = false;
   constructor(private authService: AuthService) {
 
@@ -17,6 +18,10 @@ export class BlogComponent implements OnInit {
    // this.authService.liberateEdit.subscribe(
    //   showUp => this.liberateEdit = showUp
   //  );
+  }
+
+  toggleShowBlog() {
+    this.showBlog = !this.showBlog;
   }
 
 }
