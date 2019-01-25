@@ -1,5 +1,7 @@
-<div class="p-grid">
-  <div class="p-col-12 p-md-4 p-lg-4" *ngFor="let post of posts" >
+<p *ngIf="!posts">no posts!</p>
+<ngb-pagination *ngIf="posts" [collectionSize]="posts.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+<div class="p-grid" *ngIf="posts">
+    <div class="p-col-12 p-md-4 p-lg-4" *ngFor="let post of posts | slice: pageSize | slice: 0:itemsPerPage" >
 
     <div class="card sticky-action" >
       <div class="card-image waves-effect waves-block waves-light">
@@ -12,14 +14,21 @@
           <p>{{ post.date }}</p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{ post.title | slice:0:50 }}{{ post.title.length >= 50 ? '...' : '' }}
+        <span class="card-title grey-text text-darken-4">{{ post.title }}
           <i class="material-icons right">close</i></span>
         <p>{{ post.id }} - {{ post.preview }}</p>
       </div>
       <div class="card-action">
           <button pButton type="button" label="Open" class="ui-button-raised" routerLink="post"></button>
-      </div>
+          <br>
+              <div class="chip">Tag</div>
+              <div class="chip">Tagtag</div>
+              <div class="chip">jajaja</div>
+        </div>
     </div>
 
   </div>
- </div>
+</div>
+
+<ngb-pagination [collectionSize]="posts.length" #numaPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+<pre><span class="float-md-left">Page: {{ currentPage }} / {{numaPages.pageCount}} Found items: {{ itemsPerPage }} / {{ posts.length }}</span>

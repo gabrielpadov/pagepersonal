@@ -2,8 +2,8 @@
 <h6>other posts</h6>
 <hr><hr><hr>
 <br>
-<a *ngFor="let post of posts" href="#">
-  <p-card header="{{ post.title | slice:0:20 }}{{ post.title.length >= 20 ? '...' : '' }}" subheader="{{ post.date }}" >
+<a *ngFor="let post of posts | slice:0:5; index as i" href="#">
+  <p-card [style]="{'background-color': '#ff8a80'}" header="{{ post.title | slice:0:20 }}{{ post.title.length >= 20 ? '...' : '' }}" subheader="{{ post.date }}" >
     <div>{{ post.id }} - {{ post.preview | slice:0:30 }}{{ post.preview.length >= 30 ? '...' : '' }}</div>
   </p-card>
   <br>
