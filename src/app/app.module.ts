@@ -29,6 +29,8 @@ import { CardComponent } from './blog/card/card.component';
 import { BlogService } from './blog/blog.service';
 import {ButtonModule} from 'primeng/button';
 import { ListPostComponent } from './blog/list-post/list-post.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { ListPostComponent } from './blog/list-post/list-post.component';
     FormsModule,
     EditorModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    InfiniteScrollModule
   ],
   providers: [
     AuthService,
@@ -69,3 +72,5 @@ import { ListPostComponent } from './blog/list-post/list-post.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

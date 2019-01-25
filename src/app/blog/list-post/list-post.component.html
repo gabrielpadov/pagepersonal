@@ -1,17 +1,27 @@
-<div class="container-fluid">
+<!-- div class="container-fluid">
   <div class="col-6 input-group">
-      <div class="col-5 input-group-addon">
-          <ngb-pagination [collectionSize]="posts.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
-      </div>
-      <div class="col-1 input-group-addon">
-          <input class="input-sm text-center" type="number" [min]="10" [max]="posts.length" step="1" [(ngModel)]="itemsPerPage" (onClick)="changePagesize(pageSize)">
-      </div>
-  </div>
-  <ul *ngIf="posts">
-      <li *ngFor="let post of posts | slice: pageSize | slice: 0:itemsPerPage">
-          <img [src]="" alt="{{ post.id }}">
+
+  <div class="row" infiniteScroll [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50" (scrolled)="onScroll();"
+  [scrollWindow]="false" style="height: 400px; overflow-y: scroll;" [infiniteScrollContainer]="selector">
+  <ul *ngIf="!posts">
+      <li *ngFor="let post of posts">
+          <img class="responsive-img" src="../../../assets/images/book.jpg" alt="{{ post.id }}">
           <p>{{ post.id }}. {{ post.preview }} {{ post.title }}</p>
       </li>
   </ul>
-  <pre><span class="float-md-left">Page: {{ currentPage }} / {{numPages.pageCount}}</span><span class="float-md-right">Found items: {{ itemsPerPage }} / {{ posts.length }}</span></pre>
+  </div>
+
+</div-->
+
+<div class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      (scrolled)="onScrollDown()"
+      (scrolledUp)="onUp()">
+  <p *ngFor="let i of array">
+    {{ i }}
+  </p>
 </div>

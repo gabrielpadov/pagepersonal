@@ -1,6 +1,14 @@
-<p *ngIf="!posts">no posts!</p>
-<ngb-pagination *ngIf="posts" [collectionSize]="posts.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+<h3 *ngIf="!posts">no posts!</h3>
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+    <div class="ui-g-12 ui-md-4 ui-lg-4">
+        <ngb-pagination *ngIf="posts" [collectionSize]="posts.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+    </div>
+    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+</div>
+
 <div class="p-grid" *ngIf="posts">
+
     <div class="p-col-12 p-md-4 p-lg-4" *ngFor="let post of posts | slice: pageSize | slice: 0:itemsPerPage" >
 
     <div class="card sticky-action" >
@@ -30,5 +38,11 @@
   </div>
 </div>
 
-<ngb-pagination [collectionSize]="posts.length" #numaPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
-<pre><span class="float-md-left">Page: {{ currentPage }} / {{numaPages.pageCount}} Found items: {{ itemsPerPage }} / {{ posts.length }}</span>
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+    <div class="ui-g-12 ui-md-4 ui-lg-4">
+        <ngb-pagination [collectionSize]="posts.length" #numaPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        <!--pre><span class="float-md-left">Page: {{ currentPage }} / {{numaPages.pageCount}} Found items: {{ itemsPerPage }} / {{ posts.length }}</span></pre-->
+    </div>
+    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+</div>
