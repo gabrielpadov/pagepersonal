@@ -12,16 +12,55 @@
   </ul>
   </div>
 
-</div-->
+</div
 
 <div class="search-results"
       infinite-scroll
       [infiniteScrollDistance]="scrollDistance"
       [infiniteScrollUpDistance]="scrollUpDistance"
       [infiniteScrollThrottle]="throttle"
-      (scrolled)="onScrollDown()"
-      (scrolledUp)="onUp()">
-  <p *ngFor="let i of array">
-    {{ i }}
-  </p>
+      (scrolled)="onScrollDown()">
+
+      <li>
+        <img class="responsive-img" src="../../../assets/images/book.jpg" alt="{{ post.id }}">
+        <p>{{ p.id }}. {{ p.preview }} {{ p.title }}</p>
+    </li>
+
+</div>-->
+
+  <div
+    class="search-results"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollUpDistance]="scrollUpDistance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()">
+  <!-- p *ngFor="let p of posts">{{ p.id }}. {{ p.preview }} {{ p.title }}</p-->
+
+    <div class="p-col-12 p-md-12 p-lg-12" *ngFor="let p of posts" >
+
+    <div class="card sticky-action" >
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="./../../../assets/images/book.jpg">
+      </div>
+      <div class="card-content">
+        <span class="flow-text card-title activator grey-text text-darken-4">{{ p.title }}
+          <i class="material-icons right">more_vert</i></span>
+          <br>
+          <p>{{ p.date }}</p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ p.title }}
+          <i class="material-icons right">close</i></span>
+        <p>{{ p.id }} - {{ p.preview }}</p>
+      </div>
+      <div class="card-action">
+          <button pButton type="button" label="Open" class="ui-button-raised" routerLink="post"></button>
+          <br>
+              <div class="chip">Tag</div>
+              <div class="chip">Tagtag</div>
+              <div class="chip">jajaja</div>
+        </div>
+    </div>
+
 </div>

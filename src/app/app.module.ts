@@ -21,7 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { SocialMediaService } from './social-media/social-media.service';
 import { FeedComponent } from './blog/feed/feed.component';
-import { PublisherComponent } from './blog/publisher/publisher.component';
+import { PublisherComponent } from './publisher/publisher.component';
 import {EditorModule} from 'primeng/editor';
 import { PostComponent } from './blog/post/post.component';
 import {CardModule} from 'primeng/card';
@@ -31,6 +31,10 @@ import {ButtonModule} from 'primeng/button';
 import { ListPostComponent } from './blog/list-post/list-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {DialogModule} from 'primeng/dialog';
+import {TabViewModule} from 'primeng/tabview';
+import { BlogEditorComponent } from './publisher/blog-editor/blog-editor.component';
+import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-editor.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     PublisherComponent,
     PostComponent,
     CardComponent,
-    ListPostComponent
+    ListPostComponent,
+    BlogEditorComponent,
+    AboutMeEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     EditorModule,
     CardModule,
     ButtonModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    DialogModule,
+    TabViewModule
   ],
   providers: [
     AuthService,

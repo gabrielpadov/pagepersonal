@@ -11,6 +11,7 @@
       <li routerLinkActive="active" ><a routerLink="about-me">About me<i class="material-icons left">person</i></a></li>
       <li routerLinkActive="active" ><a routerLink="blog">Blog<i class="material-icons left">web</i></a></li>
       <li onclick="$('.modal').modal();"><a href="#contact-modal" class="modal-trigger">Contact<i class="material-icons left">mail_outline</i></a></li>
+      <li><a routerLink="publisher"><i class="material-icons">lock</i></a></li>
     </ul>
   </div>
 </nav>
@@ -22,6 +23,9 @@
   <li onclick="$('.button-collapse').sideNav('show');"><a routerLink="blog">Blog<i class="material-icons left">web</i></a></li>
   <li onclick="$('.button-collapse').sideNav('show');$('.modal').modal();">
     <a href="#contact-modal" class="modal-trigger">Contact<i class="material-icons left">mail_outline</i></a>
+  </li>
+  <li onclick="$('.button-collapse').sideNav('show');" >
+    <a routerLink="publisher">Log in<i class="material-icons">lock</i></a>
   </li>
   <hr>
 </ul>

@@ -13,7 +13,7 @@ export class FeedComponent implements OnInit {
   constructor(private blogService: BlogService) {
 
     this.posts = this.blogService.getList();
-    console.log(this.posts);
+    // console.log(this.posts);
   }
 
   ngOnInit() {

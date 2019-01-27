@@ -17,7 +17,7 @@ export class CardComponent implements OnInit {
   constructor(private blogService: BlogService) {
 
     this.posts = this.blogService.getList();
-    console.log(this.posts);
+    // console.log(this.posts);
   }
 
   public onPageChange(pageNum: number): void {
