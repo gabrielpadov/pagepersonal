@@ -27,40 +27,17 @@
     </li>
 
 </div>-->
+<h3 *ngIf="!posts">no posts!</h3>
 
-  <div
-    class="search-results"
-    infinite-scroll
-    [infiniteScrollDistance]="scrollDistance"
-    [infiniteScrollUpDistance]="scrollUpDistance"
-    [infiniteScrollThrottle]="throttle"
-    (scrolled)="onScrollDown()">
-  <!-- p *ngFor="let p of posts">{{ p.id }}. {{ p.preview }} {{ p.title }}</p-->
+  <div *ngIf="posts" class="search-results"
+  infiniteScroll
+  [infiniteScrollDistance]="0.2"
+  [infiniteScrollThrottle]="0.2"
+  [scrollWindow] = "true"
+  (scrolled)="onScrollDown()">
 
+    <!--Aqui enfiar post object-->
     <div class="p-col-12 p-md-12 p-lg-12" *ngFor="let p of posts" >
-
-    <div class="card sticky-action" >
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="./../../../assets/images/book.jpg">
-      </div>
-      <div class="card-content">
-        <span class="flow-text card-title activator grey-text text-darken-4">{{ p.title }}
-          <i class="material-icons right">more_vert</i></span>
-          <br>
-          <p>{{ p.date }}</p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{ p.title }}
-          <i class="material-icons right">close</i></span>
-        <p>{{ p.id }} - {{ p.preview }}</p>
-      </div>
-      <div class="card-action">
-          <button pButton type="button" label="Open" class="ui-button-raised" routerLink="post"></button>
-          <br>
-              <div class="chip">Tag</div>
-              <div class="chip">Tagtag</div>
-              <div class="chip">jajaja</div>
-        </div>
+      <app-post></app-post>
     </div>
-
 </div>

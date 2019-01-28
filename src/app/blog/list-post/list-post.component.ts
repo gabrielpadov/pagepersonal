@@ -21,6 +21,7 @@ export class ListPostComponent implements OnInit {
   ngOnInit() { }
 
   onScrollDown() {
+
     if (this.posts.length < this.originalPosts.length) {
 
       const len = this.posts.length;
@@ -29,6 +30,7 @@ export class ListPostComponent implements OnInit {
         this.posts.push(this.originalPosts[i]);
       }
     }
+
   }
 }
   /*

@@ -14,6 +14,8 @@ export class CardComponent implements OnInit {
 
   posts = [];
 
+  display = false;
+
   constructor(private blogService: BlogService) {
 
     this.posts = this.blogService.getList();
@@ -27,6 +29,11 @@ export class CardComponent implements OnInit {
   public changePagesize(num: number): void {
     this.itemsPerPage = this.pageSize + num;
   }
+
+  showDialog() {
+    this.display = true;
+  }
+
   ngOnInit() {
   }
 

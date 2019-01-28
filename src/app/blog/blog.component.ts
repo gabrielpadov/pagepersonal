@@ -12,8 +12,6 @@ export class BlogComponent implements OnInit {
 
   liberateEdit = false;
 
-  // display = false;
-
   constructor(private authService: AuthService) {
 
   }
@@ -28,9 +26,5 @@ export class BlogComponent implements OnInit {
     this.showBlog = !this.showBlog;
   }
 
-  /*
-  showDialog() {
-      this.display = true;
-  }*/
 
 }

@@ -33,6 +33,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {DialogModule} from 'primeng/dialog';
 import {TabViewModule} from 'primeng/tabview';
+import {SelectButtonModule} from 'primeng/selectbutton';
 import { BlogEditorComponent } from './publisher/blog-editor/blog-editor.component';
 import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-editor.component';
 
@@ -68,8 +69,11 @@ import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-edi
     ButtonModule,
     InfiniteScrollModule,
     DialogModule,
-    TabViewModule
+    TabViewModule,
+    SelectButtonModule
   ],
+  exports:
+  [CardComponent],
   providers: [
     AuthService,
     AuthGuard,

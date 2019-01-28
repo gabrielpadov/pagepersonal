@@ -27,7 +27,7 @@
         <p>{{ post.id }} - {{ post.preview }}</p>
       </div>
       <div class="card-action">
-          <button pButton type="button" label="Open" class="ui-button-raised" routerLink="post"></button>
+          <button pButton type="button" label="Open" class="ui-button-raised" (click)="showDialog()"></button>
           <br>
               <div class="chip">Tag</div>
               <div class="chip">Tagtag</div>
@@ -46,3 +46,17 @@
     </div>
     <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
 </div>
+
+
+<p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '800px', minWidth: '500px', minHeight: '900px', height: '700px'}" [minY]="70"
+        [maximizable]="true" [baseZIndex]="10000">
+        <app-post></app-post>
+    <span>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+        kind and benevolent to those who give respect,
+        but given to ruthless violence whenever anything stands against the good of the family.</span>
+        <p-footer>
+            <button type="button" pButton (click)="display=false" label="Return" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>
