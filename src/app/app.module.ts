@@ -36,6 +36,23 @@ import {TabViewModule} from 'primeng/tabview';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { BlogEditorComponent } from './publisher/blog-editor/blog-editor.component';
 import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-editor.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {ListboxModule} from 'primeng/listbox';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {PanelModule} from 'primeng/panel';
+import {TableModule} from 'primeng/table';
+import {InputTextModule} from 'primeng/inputtext';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import { SocialMediaEditorComponent } from './publisher/about-me-editor/social-media-editor/social-media-editor.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+import { UserComponent } from './publisher/about-me-editor/user/user.component';
+import { OccupationComponent } from './publisher/about-me-editor/occupation/occupation.component';
+import { EducationComponent } from './publisher/about-me-editor/education/education.component';
+import { InterestsComponent } from './/publisher/about-me-editor/interests/interests.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +71,12 @@ import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-edi
     CardComponent,
     ListPostComponent,
     BlogEditorComponent,
-    AboutMeEditorComponent
+    AboutMeEditorComponent,
+    SocialMediaEditorComponent,
+    UserComponent,
+    OccupationComponent,
+    EducationComponent,
+    InterestsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +92,18 @@ import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-edi
     InfiniteScrollModule,
     DialogModule,
     TabViewModule,
-    SelectButtonModule
+    SelectButtonModule,
+    DropdownModule,
+    ListboxModule,
+    SplitButtonModule,
+    PanelModule,
+    TableModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
+    ToolbarModule
   ],
   exports:
   [CardComponent],
@@ -79,7 +112,8 @@ import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-edi
     AuthGuard,
     AboutMeGuard,
     SocialMediaService,
-    BlogService
+    BlogService,
+    ConfirmationService
     ],
   bootstrap: [AppComponent]
 })

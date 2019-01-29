@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about-me-editor.component.html',
   styleUrls: ['./about-me-editor.component.css']
 })
+
 export class AboutMeEditorComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
 
 }

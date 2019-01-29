@@ -9,6 +9,12 @@ export class BlogEditorComponent implements OnInit {
 
   constructor() { }
 
+
+  // tslint:disable-next-line:member-ordering
+  text1 = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
+
+  text2: string;
+
   ngOnInit() {
   }
 

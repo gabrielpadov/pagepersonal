@@ -1,0 +1,33 @@
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+
+<section>
+    <p-card header="Add social media">
+        <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+          <label for="float-input">Link</label>
+        </span>
+        <p-dropdown size="30" [options]="medias" [(ngModel)]="selectedMedia" [autoWidth]="false"></p-dropdown>
+        <p-footer>
+            <button pButton type="button" label="add" (click)="save()" icon="pi pi-plus"></button>
+        </p-footer>
+    </p-card>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <p-card header="Social media list">
+        <p-toolbar *ngFor="let m of listMedias">
+          <div class="ui-toolbar-group-left">
+            <input id="{{ m.id }}" type="text" placeholder="{{ m.link }}" size="30" pInputText [(ngModel)]="link">
+          </div>
+          <div class="ui-toolbar-group-right">
+            <button pButton (click)="confirm1()" type="button" class="ui-button-warning" icon="pi pi-arrow-up" label="update"></button>
+            <button pButton (click)="confirm2()" type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
+          </div>
+        </p-toolbar>
+      </p-card>
+</section>
+
+<p-messages [value]="msgs"></p-messages>
