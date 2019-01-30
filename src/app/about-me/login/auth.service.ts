@@ -17,8 +17,8 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  login(user:User){
-    if( user.name === 'root' && user.password === '123'){
+  login(user: User) {
+    if ( user.name === 'root' && user.password === '123') {
       this.userAuth = true;
       this.liberateEdit.emit(true);
       this.router.navigate(['about-me/form']);
@@ -26,18 +26,18 @@ export class AuthService {
     } else {
       this.userAuth = false;
       this.liberateEdit.emit(false);
-      //this.router.navigate(['/']);
+      // this.router.navigate(['/']);
       toast('Invalid!', 4000);
     }
   }
 
-  logout(){
+  logout() {
     this.userAuth = false;
     this.router.navigate(['']);
     toast('Lougout ok!', 4000);
   }
 
-  usuarioAutenticado(){
+  usuarioAutenticado() {
     return this.userAuth;
   }
 

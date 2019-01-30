@@ -2,32 +2,44 @@
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
 
 <section>
-    <p-card header="Add social media">
-        <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText>
-          <label for="float-input">Link</label>
-        </span>
-        <p-dropdown size="30" [options]="medias" [(ngModel)]="selectedMedia" [autoWidth]="false"></p-dropdown>
-        <p-footer>
-            <button pButton type="button" label="add" (click)="save()" icon="pi pi-plus"></button>
-        </p-footer>
-    </p-card>
-    </section>
-
-    <div class="divider"></div>
-
-    <section>
-      <p-card header="Social media list">
-        <p-toolbar *ngFor="let m of listMedias">
-          <div class="ui-toolbar-group-left">
-            <input id="{{ m.id }}" type="text" placeholder="{{ m.link }}" size="30" pInputText [(ngModel)]="link">
+  <p-card header="Add social media">
+    <form #socialMedia="ngForm" (ngSubmit)="save(socialMedia)" >
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <span class="ui-float-label">
+              <input id="float-input" size="30" type="text" pInputText name="link" [(ngModel)]="selectedMedia.link">
+              <label for="float-input">Link</label>
+            </span>
+            <div class="ui-inputgroup" style="margin-left: 2px;">
+              <p-dropdown  name="media" [options]="medias" [(ngModel)]="selectedMedia.media" [autoWidth]="false" ></p-dropdown>
+            </div></div>
           </div>
-          <div class="ui-toolbar-group-right">
-            <button pButton (click)="confirm1()" type="button" class="ui-button-warning" icon="pi pi-arrow-up" label="update"></button>
-            <button pButton (click)="confirm2()" type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
+        </div>
+      <button pButton type="submit" label="add" icon="pi pi-plus"></button>
+    </form>
+  </p-card>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p-card header="Social media list">
+    <div class="row">
+      <div class="col s6 m6 l4"  *ngFor="let m of listMedias">
+        <div class="card teal lighten-4">
+          <div class="card-content black-text">
+            <p>
+              <i class="small fa fa-{{ m.media }}"></i>  {{ m.link }}
+            </p>
           </div>
-        </p-toolbar>
-      </p-card>
+          <div class="card-action">
+            <button pButton (click)="delete(m.id)" type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-card>
 </section>
 
 <p-messages [value]="msgs"></p-messages>

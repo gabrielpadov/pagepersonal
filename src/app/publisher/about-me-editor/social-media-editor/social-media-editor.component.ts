@@ -1,7 +1,8 @@
+import { SocialMedia } from './../../../datasource/social-media';
 import { Component, OnInit } from '@angular/core';
 import {SelectItem, Message, MessageService} from 'primeng/api';
-import { SocialMedia } from '../../../datasource/social-media';
 import {ConfirmationService} from 'primeng/api';
+import { PublisherService } from '../../publisher.service';
 
 @Component({
   selector: 'app-social-media-editor',
@@ -11,15 +12,23 @@ import {ConfirmationService} from 'primeng/api';
 })
 export class SocialMediaEditorComponent implements OnInit {
 
+  selectedMedia: any = {
+    link: '',
+    media: '',
+  };
+
   medias: SelectItem[];
-  selectedMedia: SocialMedia;
-  link: string;
-  selectedOption: any;
   listMedias: any = [];
   msgs: Message[] = [];
+  aux: SocialMedia;
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {
-    this.medias = [
+  constructor(private publisherService: PublisherService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService) {
+
+      this.listMedias = this.publisherService.getListMedias();
+
+      this.medias = [
       {label: 'Select Media', value: null},
       {label: 'Instagram', value: 'instagram'},
       {label: 'Facebook', value: 'facebook'},
@@ -36,42 +45,19 @@ export class SocialMediaEditorComponent implements OnInit {
     ];
    }
 
-  ngOnInit() {
-    this.listMedias = [
-      {id: 1, media: 'instagram', link: 'www.instagram.com'},
-      {id: 2, media: 'facebook', link: 'www.facebook.com'}
-    ];
-  }
+  ngOnInit () { }
 
-save() {
-  console.log('save');
+save(m) {
+  // console.log('save');
+  console.log(this.selectedMedia);
+  // console.log(m);
+  this.listMedias.push(this.selectedMedia);
+  console.log(this.listMedias);
+
   this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
 }
 
-update() {
-  console.log('update');
-}
-
 delete() {
-  console.log('delete');
-}
-
-confirm1() {
-  this.confirmationService.confirm({
-      message: 'Are you sure that you want to proceed?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-          this.update();
-          this.msgs = [{severity: 'info', summary: 'Confirmed', detail: 'Updated record'}];
-      },
-      reject: () => {
-          this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
-      }
-  });
-}
-
-confirm2() {
   this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',

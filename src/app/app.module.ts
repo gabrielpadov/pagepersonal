@@ -53,6 +53,7 @@ import { UserComponent } from './publisher/about-me-editor/user/user.component';
 import { OccupationComponent } from './publisher/about-me-editor/occupation/occupation.component';
 import { EducationComponent } from './publisher/about-me-editor/education/education.component';
 import { InterestsComponent } from './/publisher/about-me-editor/interests/interests.component';
+import { PublisherService } from './publisher/publisher.service';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { InterestsComponent } from './/publisher/about-me-editor/interests/inter
     AboutMeGuard,
     SocialMediaService,
     BlogService,
-    ConfirmationService
+    ConfirmationService,
+    PublisherService
     ],
   bootstrap: [AppComponent]
 })
