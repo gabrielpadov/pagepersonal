@@ -54,6 +54,7 @@ import { OccupationComponent } from './publisher/about-me-editor/occupation/occu
 import { EducationComponent } from './publisher/about-me-editor/education/education.component';
 import { InterestsComponent } from './/publisher/about-me-editor/interests/interests.component';
 import { PublisherService } from './publisher/publisher.service';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { PublisherService } from './publisher/publisher.service';
     MessagesModule,
     MessageModule,
     ToastModule,
-    ToolbarModule
+    ToolbarModule,
+    TooltipModule
   ],
   exports:
   [CardComponent],

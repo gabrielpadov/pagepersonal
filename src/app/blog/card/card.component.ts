@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../blog.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -12,15 +11,11 @@ export class CardComponent implements OnInit {
   itemsPerPage = 9;
   pageSize: number;
 
-  posts = [];
+  @Input() posts: any = [];
 
   display = false;
 
-  constructor(private blogService: BlogService) {
-
-    this.posts = this.blogService.getList();
-    // console.log(this.posts);
-  }
+  constructor() { }
 
   public onPageChange(pageNum: number): void {
     this.pageSize = this.itemsPerPage * (pageNum - 1);

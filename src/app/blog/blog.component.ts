@@ -1,3 +1,4 @@
+import { BlogService } from './blog.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../about-me/login/auth.service';
 
@@ -12,8 +13,12 @@ export class BlogComponent implements OnInit {
 
   liberateEdit = false;
 
-  constructor(private authService: AuthService) {
+  listPost: object [];
+  listLabel: object [];
 
+  constructor(private authService: AuthService, private blogService: BlogService) {
+    this.listPost = blogService.getList();
+    this.listLabel = blogService.getListLabel();
   }
 
   ngOnInit() {

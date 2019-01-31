@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../blog.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-post',
@@ -8,29 +7,29 @@ import { BlogService } from '../blog.service';
 })
 export class ListPostComponent implements OnInit {
 
-  originalPosts: any = [];
-  posts: any = [];
+  @Input() posts: any[];
+  postList: any = [];
 
-  constructor(private blogService: BlogService) {
+  constructor() {
 
-    this.originalPosts = this.blogService.getList();
-    this.posts = this.originalPosts.slice(0, 1);
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.posts) {
+      this.postList = this.posts.slice(0, 1);
+    }
+  }
 
   onScrollDown() {
+    if (this.postList.length < this.posts.length) {
 
-    if (this.posts.length < this.originalPosts.length) {
-
-      const len = this.posts.length;
+      const len = this.postList.length;
 
       for (let i = len; i <= len + 1; i++) {
-        this.posts.push(this.originalPosts[i]);
+        this.postList.push(this.posts[i]);
       }
     }
-
   }
 }
   /*

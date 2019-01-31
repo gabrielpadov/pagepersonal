@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BlogService } from './../blog.service';
+import { Component, Input, OnInit } from '@angular/core';
 import {SelectItem} from 'primeng/api';
 
 @Component({
@@ -9,32 +8,20 @@ import {SelectItem} from 'primeng/api';
 })
 export class FeedComponent implements OnInit {
 
-  posts = [];
+  @Input() posts: any[];
+  @Input() labels: any;
 
-    
   types: SelectItem[];
-  
-    selectedType: string;
+  selectedType: string;
 
-    selectedModes: string[];
+  constructor() {
 
-    modes: SelectItem[];
-
-
-  constructor(private blogService: BlogService) {
-
-    this.posts = this.blogService.getList();
-    // console.log(this.posts);
     this.types = [
       {label: 'Paypal', value: 'PayPal', icon: 'fa fa-fw fa-cc-paypal'},
       {label: 'Visa', value: 'Visa', icon: 'fa fa-fw fa-cc-visa'},
       {label: 'MasterCard', value: 'MasterCard', icon: 'fa fa-fw fa-cc-mastercard'}
-  ];
-  this.modes = [
-    {value: 'Bold', title: 'Bold', icon: 'fa fa-fw fa-bold'},
-    {value: 'Italic', title: 'Italic', icon: 'fa fa-fw fa-italic'},
-    {value: 'Underline', title: 'Underline', icon: 'fa fa-fw fa-underline'}
-  ];
+    ];
+
   }
 
   clear() {
@@ -42,6 +29,14 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.labels);
+  }
+
+  filterLabel(label: string) {
+    console.log(label);
   }
 
 }
+/*list:Array<YourObject>=loadYourList();
+
+filtered:Array<YourObject> = list.filter(x=>x.team1Id=='yourID'&& x.team2Id=='your_id'); */

@@ -1,10 +1,14 @@
 <hr>
 <h6>other posts</h6>
 <hr><hr><hr>
-<p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
-<p>Selected Type: <span style="font-weight: bold">{{selectedType}}</span></p>
 
-<br> 
+<div *ngIf="labels">
+<a class="chip" (click)="filterLabel('Recent')">Recent</a>
+<a class="chip"  *ngFor="let l of labels" (click)="filterLabel(l.label);">
+  {{ l.label }}</a>
+</div>
+
+<br>
 <a *ngFor="let post of posts | slice:0:5; index as i" href="#">
   <p-card [style]="{'background-color': '#ff8a80'}" header="{{ post.title | slice:0:20 }}{{ post.title.length >= 20 ? '...' : '' }}" subheader="{{ post.date }}" >
     <div>{{ post.id }} - {{ post.preview | slice:0:30 }}{{ post.preview.length >= 30 ? '...' : '' }}</div>

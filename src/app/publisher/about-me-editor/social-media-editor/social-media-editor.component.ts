@@ -1,5 +1,5 @@
 import { SocialMedia } from './../../../datasource/social-media';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {SelectItem, Message, MessageService} from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
 import { PublisherService } from '../../publisher.service';
@@ -10,6 +10,7 @@ import { PublisherService } from '../../publisher.service';
   styleUrls: ['./social-media-editor.component.css'],
   providers: [ConfirmationService, MessageService]
 })
+
 export class SocialMediaEditorComponent implements OnInit {
 
   selectedMedia: any = {
@@ -29,21 +30,21 @@ export class SocialMediaEditorComponent implements OnInit {
       this.listMedias = this.publisherService.getListMedias();
 
       this.medias = [
-      {label: 'Select Media', value: null},
-      {label: 'Instagram', value: 'instagram'},
-      {label: 'Facebook', value: 'facebook'},
-      {label: 'Twitter', value: 'twitter'},
-      {label: 'Youtube', value: 'youtube'},
-      {label: 'Steam', value: 'Steam'},
-      {label: 'Reddit', value: 'reddit'},
-      {label: 'Dropbox', value: 'dropbox'},
-      {label: 'Linkedin', value: 'linkedin'},
-      {label: 'Github', value: 'github'},
-      {label: 'Spotify', value: 'spotify'},
-      {label: 'Slack', value: 'slack'},
-      {label: 'Bitbucket', value: 'bitbucket'}
-    ];
-   }
+        {label: 'Select Media', value: null},
+        {label: 'Instagram', value: 'instagram'},
+        {label: 'Facebook', value: 'facebook'},
+        {label: 'Twitter', value: 'twitter'},
+        {label: 'Youtube', value: 'youtube'},
+        {label: 'Steam', value: 'Steam'},
+        {label: 'Reddit', value: 'reddit'},
+        {label: 'Dropbox', value: 'dropbox'},
+        {label: 'Linkedin', value: 'linkedin'},
+        {label: 'Github', value: 'github'},
+        {label: 'Spotify', value: 'spotify'},
+        {label: 'Slack', value: 'slack'},
+        {label: 'Bitbucket', value: 'bitbucket'}
+      ];
+    }
 
   ngOnInit () { }
 

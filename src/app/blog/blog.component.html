@@ -31,16 +31,16 @@
 
     <section>
 
-      <app-list-post *ngIf="!showBlog"></app-list-post>
+      <app-list-post *ngIf="!showBlog" [posts]="listPost"></app-list-post>
 
-      <app-card *ngIf="showBlog"></app-card>
+      <app-card *ngIf="showBlog" [posts]="listPost"></app-card>
 
     </section>
 
   </div>
 
   <div class="col s12 m12 l2 xl2" *ngIf="!showBlog">
-    <app-feed></app-feed>
+    <app-feed [posts]="listPost" [labels]="listLabel"></app-feed>
   </div>
 
 </div>
