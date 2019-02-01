@@ -8,10 +8,7 @@
   <p>{{ post.preview }}</p>
   <div class="divider"></div>
   <footer>
-    <p><small><p class="chip">Tag</p>
-      <p class="chip">Tagtag</p>
-      <p class="chip">jajaja</p>
-    </small></p>
+    <p class="chip" *ngFor="let l of post.label">{{ l }}</p>
   </footer>
 </article>
 </section>

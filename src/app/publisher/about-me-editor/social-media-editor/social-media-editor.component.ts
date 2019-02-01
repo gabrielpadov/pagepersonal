@@ -49,11 +49,13 @@ export class SocialMediaEditorComponent implements OnInit {
   ngOnInit () { }
 
 save(m) {
-  // console.log('save');
-  console.log(this.selectedMedia);
-  // console.log(m);
-  this.listMedias.push(this.selectedMedia);
-  console.log(this.listMedias);
+
+  // console.log(this.selectedMedia);
+
+  // this.listMedias.push(this.selectedMedia);
+
+  this.publisherService.getAddMedias(this.selectedMedia);
+  this.listMedias = this.publisherService.getListMedias();
 
   this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
 }

@@ -16,4 +16,9 @@ export class PublisherService {
   getListMedias() {
     return this.listMedias;
   }
+
+  getAddMedias(media: any) {
+    this.listMedias.push(media);
+    console.log(this.listMedias);
+  }
 }

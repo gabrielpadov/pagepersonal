@@ -20,12 +20,12 @@
   <div class="col l1 xl1"></div>
   <div class="col s12 m12 l9 xl9">
     <section>
+      <div class="btnBlog">
       <a class="btn-floating btn-small waves-effect waves-light" (click)="toggleShowBlog()" *ngIf="showBlog">
         <i class="material-icons">view_headline</i></a>
       <a class="btn-floating btn-small waves-effect waves-light" (click)="toggleShowBlog()" *ngIf="!showBlog">
         <i class="material-icons">view_comfy</i></a>
-      <a class="btn-floating btn-small waves-effect waves-light">
-        <i class="material-icons">edit</i></a>
+      </div>
       <hr>
     </section>
 
@@ -39,7 +39,7 @@
 
   </div>
 
-  <div class="col s12 m12 l2 xl2" *ngIf="!showBlog">
+  <div class="col s12 m12 l2 xl2">
     <app-feed [posts]="listPost" [labels]="listLabel"></app-feed>
   </div>
 

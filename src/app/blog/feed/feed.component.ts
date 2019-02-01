@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-feed',
@@ -10,33 +9,33 @@ export class FeedComponent implements OnInit {
 
   @Input() posts: any[];
   @Input() labels: any;
+  auxPost: any[];
+  aux: any;
+  aux2;
+  aux3: string;
 
-  types: SelectItem[];
-  selectedType: string;
-
-  constructor() {
-
-    this.types = [
-      {label: 'Paypal', value: 'PayPal', icon: 'fa fa-fw fa-cc-paypal'},
-      {label: 'Visa', value: 'Visa', icon: 'fa fa-fw fa-cc-visa'},
-      {label: 'MasterCard', value: 'MasterCard', icon: 'fa fa-fw fa-cc-mastercard'}
-    ];
-
-  }
-
-  clear() {
-    this.selectedType = null;
-  }
+  constructor() {  }
 
   ngOnInit() {
-    console.log(this.labels);
-  }
+    if (this.posts) {
+      this.auxPost = this.posts;
+    }
+   }
 
-  filterLabel(label: string) {
-    console.log(label);
+  filterLabel(l: string) {
+
+    this.auxPost = [];
+
+    if (l === 'Recent') {
+      this.auxPost = this.posts;
+    } else {
+      for (let i = 0; i < this.posts.length; i++) {
+          this.aux = this.posts[i].label.filter(x => x.includes(l));
+        if (l === this.aux[0]) {
+            this.auxPost.push(this.posts[i]);
+        }
+      }
+    }
   }
 
 }
-/*list:Array<YourObject>=loadYourList();
-
-filtered:Array<YourObject> = list.filter(x=>x.team1Id=='yourID'&& x.team2Id=='your_id'); */
