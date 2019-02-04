@@ -1,0 +1,22 @@
+<p>
+  post-view works!
+</p>
+<ul class="collection">
+  <li class="collection-item">
+    <div>Alvin
+      <div class="secondary-content">
+        <a (onclick)="postView()" ><i class="material-icons">pageview</i></a>
+        <a (onclick)="postUpdate()" ><i class="material-icons">update</i></a>
+        <a (onclick)="postDelete()" ><i class="material-icons">delete</i></a>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<p-dialog header="" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+        [maximizable]="true" [baseZIndex]="10000">
+        <app-post></app-post>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Return" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>

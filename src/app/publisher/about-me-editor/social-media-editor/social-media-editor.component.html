@@ -8,11 +8,11 @@
         <div class="ui-g-12 ui-md-12">
           <div class="ui-inputgroup">
             <span class="ui-float-label">
-              <input id="float-input" size="30" type="text" pInputText name="link" [(ngModel)]="selectedMedia.link">
+              <input id="float-input" size="30" type="text" pInputText name="link" (ngModel)="selectedMedia.link">
               <label for="float-input">Link</label>
             </span>
             <div class="ui-inputgroup" style="margin-left: 2px;">
-              <p-dropdown  name="media" [options]="medias" [(ngModel)]="selectedMedia.media" [autoWidth]="false" ></p-dropdown>
+              <p-dropdown  name="media" [options]="medias" (ngModel)="selectedMedia.media" [autoWidth]="false" ></p-dropdown>
             </div></div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { BlogService } from './blog.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../about-me/login/auth.service';
+import { Post } from '../datasource/post';
 
 @Component({
   selector: 'app-blog',
@@ -9,10 +10,10 @@ import { AuthService } from '../about-me/login/auth.service';
 })
 export class BlogComponent implements OnInit {
 
+  modalPost: Post;
   showBlog = true;
-
   liberateEdit = false;
-
+  display = false;
   listPost: object [];
   listLabel: object [];
 
@@ -31,5 +32,13 @@ export class BlogComponent implements OnInit {
     this.showBlog = !this.showBlog;
   }
 
+  reciverPost(showPost) {
+    this.modalPost = showPost;
+    this.showDialog();
+  }
+
+  showDialog() {
+    this.display = true;
+}
 
 }

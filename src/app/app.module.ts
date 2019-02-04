@@ -55,6 +55,9 @@ import { EducationComponent } from './publisher/about-me-editor/education/educat
 import { InterestsComponent } from './/publisher/about-me-editor/interests/interests.component';
 import { PublisherService } from './publisher/publisher.service';
 import {TooltipModule} from 'primeng/tooltip';
+import { AppService } from './app.service';
+import { PostEditorComponent } from './publisher/blog-editor/post-editor/post-editor.component';
+import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,9 @@ import {TooltipModule} from 'primeng/tooltip';
     UserComponent,
     OccupationComponent,
     EducationComponent,
-    InterestsComponent
+    InterestsComponent,
+    PostEditorComponent,
+    PostViewComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +122,8 @@ import {TooltipModule} from 'primeng/tooltip';
     SocialMediaService,
     BlogService,
     ConfirmationService,
-    PublisherService
+    PublisherService,
+    AppService
     ],
   bootstrap: [AppComponent]
 })

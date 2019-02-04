@@ -14,6 +14,8 @@ import { ListPostComponent } from './blog/list-post/list-post.component';
 import { CardComponent } from './blog/card/card.component';
 import { BlogEditorComponent } from './publisher/blog-editor/blog-editor.component';
 import { AboutMeEditorComponent } from './publisher/about-me-editor/about-me-editor.component';
+import { PostEditorComponent } from './publisher/blog-editor/post-editor/post-editor.component';
+import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

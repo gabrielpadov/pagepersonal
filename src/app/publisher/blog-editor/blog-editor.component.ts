@@ -6,16 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-editor.component.css']
 })
 export class BlogEditorComponent implements OnInit {
+  active = true;
 
   constructor() { }
-
-
-  // tslint:disable-next-line:member-ordering
-  text1 = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
-
-  text2: string;
 
   ngOnInit() {
   }
 
+  toggleBlogeditor() {
+    this.active = !this.active;
+  }
 }

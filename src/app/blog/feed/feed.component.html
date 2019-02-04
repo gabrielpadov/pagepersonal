@@ -9,7 +9,7 @@
 </div>
 
 <br>
-<a *ngFor="let post of auxPost | slice:0:5; index as i" href="#">
+<a *ngFor="let post of auxPost | slice:0:5; index as i" (click)="viewPost(post)">
   <p-card [style]="{'background-color': '#ff8a80'}" header="{{ post.title | slice:0:20 }}{{ post.title.length >= 20 ? '...' : '' }}" subheader="{{ post.date }}" >
     <div>{{ post.id }} - {{ post.preview | slice:0:30 }}{{ post.preview.length >= 30 ? '...' : '' }}</div>
   </p-card>
