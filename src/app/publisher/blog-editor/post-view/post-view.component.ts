@@ -1,33 +1,83 @@
-import { Component, OnInit } from '@angular/core';
+import { Post } from './../../../datasource/post';
+import { Component, OnInit, Input } from '@angular/core';
+import { MessageService, ConfirmationService, Message } from 'primeng/api';
+import { PublisherService } from '../../publisher.service';
 
 @Component({
   selector: 'app-post-view',
   templateUrl: './post-view.component.html',
-  styleUrls: ['./post-view.component.css']
+  styleUrls: ['./post-view.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class PostViewComponent implements OnInit {
 
+  @Input() postList: Post [];
+  post: Post;
   display = false;
+  show = true;
+  currentPage = 1;
+  itemsPerPage = 5;
+  pageSize: number;
+  msgs: Message[] = [];
 
-  constructor() { }
+  constructor(private publisherService: PublisherService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  reciverEdit() {
+    this.showEdit();
   }
 
   showDialog() {
     this.display = true;
   }
 
-  postView() {
-    console.log('ok!');
+  showEdit() {
+    this.show = !this.show;
+  }
+
+  postView(p: Post) {
+    this.post = p;
     this.showDialog();
   }
 
-  postDelete() {
-    console.log('delete');
+  postDelete(id) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+          this.publisherService.setDeletePost(id);
+          this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record deleted'}];
+      },
+      reject: () => {
+          this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
+      }
+    });
   }
 
-  postUpdate() {
+  postUpdate(p) {
+    console.log(p);
     console.log('update');
+    this.showEdit();
   }
+
+  postNew() {
+    this.showEdit();
+  }
+
+  public onPageChange(pageNum: number): void {
+    this.pageSize = this.itemsPerPage * (pageNum - 1);
+  }
+
+  public changePagesize(num: number): void {
+    this.itemsPerPage = this.pageSize + num;
+  }
+
+clear() {
+  this.messageService.clear();
+}
+
 }

@@ -9,7 +9,7 @@ import { Post } from '../../datasource/post';
 export class PostComponent implements OnInit {
 
   @Input() post;
-  
+
   constructor() {
 
   }

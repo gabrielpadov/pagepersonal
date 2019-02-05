@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterializeModule, MaterializeDirective } from 'angular2-materialize';
@@ -58,6 +57,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import { AppService } from './app.service';
 import { PostEditorComponent } from './publisher/blog-editor/post-editor/post-editor.component';
 import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.component';
+import {GrowlModule} from 'primeng/growl';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import { DatePipe } from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,8 @@ import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.c
     EducationComponent,
     InterestsComponent,
     PostEditorComponent,
-    PostViewComponent
+    PostViewComponent,
+    DatePipe
   ],
   imports: [
     BrowserModule,
@@ -111,7 +114,9 @@ import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.c
     MessageModule,
     ToastModule,
     ToolbarModule,
-    TooltipModule
+    TooltipModule,
+    GrowlModule,
+    AutoCompleteModule
   ],
   exports:
   [CardComponent],

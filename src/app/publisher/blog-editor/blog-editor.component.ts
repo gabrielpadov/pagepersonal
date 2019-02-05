@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PublisherService } from '../publisher.service';
+import { Post } from 'src/app/datasource/post';
 
 @Component({
   selector: 'app-blog-editor',
@@ -6,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-editor.component.css']
 })
 export class BlogEditorComponent implements OnInit {
-  active = true;
 
-  constructor() { }
+  postList: Post [];
+
+  constructor(publisherService: PublisherService) {
+    this.postList = publisherService.getList(); }
 
   ngOnInit() {
   }
 
-  toggleBlogeditor() {
-    this.active = !this.active;
-  }
 }

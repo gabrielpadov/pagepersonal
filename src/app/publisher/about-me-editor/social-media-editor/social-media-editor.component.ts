@@ -67,7 +67,7 @@ delete() {
       icon: 'pi pi-info-circle',
       accept: () => {
           this.delete();
-          this.msgs = [{severity: 'info', summary: 'Confirmed', detail: 'Record deleted'}];
+          this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record deleted'}];
       },
       reject: () => {
           this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
