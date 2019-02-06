@@ -1,22 +1,22 @@
 
-<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-
 <section>
   <p-card header="Add social media">
-    <form #socialMedia="ngForm" (ngSubmit)="save(socialMedia)" >
+    <form #socialMedia="ngForm" (ngSubmit)="save(socialMedia); socialMedia.reset()" >
       <div class="ui-g ui-fluid">
         <div class="ui-g-12 ui-md-12">
           <div class="ui-inputgroup">
             <span class="ui-float-label">
-              <input id="float-input" size="30" type="text" pInputText name="link" (ngModel)="selectedMedia.link">
+              <input id="link" size="60" type="url" pInputText name="link" ngModel required>
               <label for="float-input">Link</label>
             </span>
-            <div class="ui-inputgroup" style="margin-left: 2px;">
-              <p-dropdown  name="media" [options]="medias" (ngModel)="selectedMedia.media" [autoWidth]="false" ></p-dropdown>
-            </div></div>
+
+            <div class="ui-inputgroup" style="margin-left: 5px;">
+              <p-dropdown [options]="medias" name="media" ngModel required [autoWidth]="false" ></p-dropdown>
+            </div>
+          </div>
           </div>
         </div>
-      <button pButton type="submit" label="add" icon="pi pi-plus"></button>
+      <button pButton type="submit" [disabled]="!socialMedia.valid" label="add" icon="pi pi-plus"></button>
     </form>
   </p-card>
 </section>
@@ -42,4 +42,5 @@
   </p-card>
 </section>
 
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
 <p-growl [value]="msgs"></p-growl>

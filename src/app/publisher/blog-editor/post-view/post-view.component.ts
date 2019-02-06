@@ -25,9 +25,7 @@ export class PostViewComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private messageService: MessageService) { }
 
-  ngOnInit() {
-    this.updatePost = null;
-  }
+  ngOnInit() { this.updatePost = null; }
 
   reciverEdit() {
     this.showEdit();

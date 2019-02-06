@@ -1,8 +1,9 @@
 import { SocialMedia } from './../../../datasource/social-media';
-import { Component, OnInit, Input } from '@angular/core';
-import {SelectItem, Message, MessageService} from 'primeng/api';
-import {ConfirmationService} from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
+import { SelectItem, Message, MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { PublisherService } from '../../publisher.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-social-media-editor',
@@ -13,15 +14,9 @@ import { PublisherService } from '../../publisher.service';
 
 export class SocialMediaEditorComponent implements OnInit {
 
-  selectedMedia: any = {
-    link: '',
-    media: '',
-  };
-
   medias: SelectItem[];
   listMedias: any = [];
   msgs: Message[] = [];
-  aux: SocialMedia;
 
   constructor(private publisherService: PublisherService,
     private confirmationService: ConfirmationService,
@@ -46,37 +41,39 @@ export class SocialMediaEditorComponent implements OnInit {
       ];
     }
 
-  ngOnInit () { }
+  ngOnInit() { }
 
-save(m) {
+save(selectedMedia: NgForm) {
 
-  // console.log(this.selectedMedia);
+  console.log(selectedMedia.value);
 
-  // this.listMedias.push(this.selectedMedia);
+  if (this.publisherService.getAddMedias(selectedMedia)) {
+    this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
+  } else {
+    this.messageService.add({severity: 'error', summary: 'Service Message', detail: 'Have empty fields'});
+  }
 
-  this.publisherService.getAddMedias(this.selectedMedia);
-  this.listMedias = this.publisherService.getListMedias();
-
-  this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
 }
 
-delete() {
-  this.confirmationService.confirm({
+delete(id) {
+  this.confirmationService.confirm ({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
-          this.delete();
+          this.publisherService.setDeletePost(id);
           this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record deleted'}];
       },
       reject: () => {
           this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
       }
   });
+
 }
 
 clear() {
   this.messageService.clear();
 }
+
 
 }

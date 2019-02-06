@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Post } from '../datasource/post';
+import { SocialMedia } from '../datasource/social-media';
 
 @Injectable({
   providedIn: 'root'
@@ -49,8 +51,10 @@ export class PublisherService {
   }
 
   getAddMedias(media: any) {
-    this.listMedias.push(media);
-    console.log(this.listMedias);
+
+    this.listMedias.push(media.value);
+
+    return true;
   }
 
   getListLabel() {
@@ -63,5 +67,8 @@ export class PublisherService {
 
   setDeletePost(id) {
     console.log(id);
+    this.listMedias.pop();
+    console.log(this.listMedias);
+    return true;
   }
 }

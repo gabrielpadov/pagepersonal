@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Post } from 'src/app/datasource/post';
 import { ConfirmationService, MessageService, Message } from 'primeng/api';
 import { PublisherService } from '../../publisher.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-post-editor',

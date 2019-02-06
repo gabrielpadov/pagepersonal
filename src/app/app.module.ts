@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './about-me/login/login.component';
 import { AuthService } from './about-me/login/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { AboutMeGuard } from './guards/aboutMe.guard';
 import { FormComponent } from './about-me/form/form.component';
@@ -60,6 +60,7 @@ import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.c
 import {GrowlModule} from 'primeng/growl';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { DatePipe } from './pipes/date.pipe';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,9 @@ import { DatePipe } from './pipes/date.pipe';
     ToolbarModule,
     TooltipModule,
     GrowlModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    InputTextareaModule,
+    ReactiveFormsModule
   ],
   exports:
   [CardComponent],

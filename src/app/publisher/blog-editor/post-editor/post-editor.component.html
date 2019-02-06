@@ -2,12 +2,16 @@
 
   <h3 class="first">Edit post!</h3>
 
-  <hr><br>
-  <p>{{ date | formatDate }}</p>
+  <hr>
+
+
   <span class="ui-float-label">
-      <input id="float-input" type="hidden" size="10" pInputText>
-      <label for="float-input">Date</label>
+    <input id="float-input" type="hidden" size="10" [(ngModel)]="date" styleClass="wid100"
+     pInputText>
+    <label for="float-input">Date</label>
   </span>
+  <br>
+  <p>{{ date | formatDate }}</p>
 
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText>
@@ -15,21 +19,19 @@
   </span>
 
   <span class="ui-float-label">
-    <textarea cols="30" id="float-input" pinputtextarea="" rows="5"
-     class="ui-inputtext ui-corner-all ui-state-default ui-widget"
-     style="margin: 0px; height: 100px;"></textarea>
+    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"></textarea>
     <label for="float-input">Preview</label></span>
 
   <hr>
 
   <p-editor [(ngModel)]="text1" [style]="{'height':'320px'}"></p-editor>
-  <p>Value: {{text1||'empty'}}</p>
 
   <hr>
 
   <span class="ui-float-label">
-      <p-autoComplete [(ngModel)]="countries" [suggestions]="filteredCountriesMultiple" (completeMethod)="filterCountryMultiple($event)" styleClass="wid100"
-          [minLength]="1" placeholder="Countries" field="name" [multiple]="true">
+      <p-autoComplete [(ngModel)]="countries" [suggestions]="filteredCountriesMultiple"
+      (completeMethod)="filterCountryMultiple($event)" styleClass="wid100"
+          [minLength]="1" field="name" [multiple]="true">
       </p-autoComplete>
   <label for="float-input">Labels</label></span>
   <ul>
@@ -37,6 +39,8 @@
   </ul>
 
   <hr>
+
+
 
   <button style="margin-right: 2.5px;" pButton type="button" label="Clear"
   icon="pi pi-times" class="ui-button-danger" (click)="text1=null"></button>
@@ -55,6 +59,8 @@
   <hr>
 
 </div>
+
+<p>Value: {{text1||'empty'}}</p>
 
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
 <p-growl [value]="msgs"></p-growl>
