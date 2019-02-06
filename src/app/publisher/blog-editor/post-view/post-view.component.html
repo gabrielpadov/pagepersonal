@@ -32,4 +32,4 @@
         </p-footer>
 </p-dialog>
 </div>
-<app-post-editor (showPost)="reciverEdit($event)" *ngIf="!show"></app-post-editor>
+<app-post-editor [updatePost]="updatePost" (showPost)="reciverEdit($event)" *ngIf="!show"></app-post-editor>

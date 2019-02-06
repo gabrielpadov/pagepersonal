@@ -5,7 +5,7 @@
   <hr><br>
   <p>{{ date | formatDate }}</p>
   <span class="ui-float-label">
-      <input id="float-input" type="hidden" size="10" ngModel="date" pInputText>
+      <input id="float-input" type="hidden" size="10" pInputText>
       <label for="float-input">Date</label>
   </span>
 
@@ -55,3 +55,6 @@
   <hr>
 
 </div>
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-growl [value]="msgs"></p-growl>

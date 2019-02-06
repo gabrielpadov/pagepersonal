@@ -12,6 +12,7 @@ import { PublisherService } from '../../publisher.service';
 export class PostViewComponent implements OnInit {
 
   @Input() postList: Post [];
+  updatePost: Post;
   post: Post;
   display = false;
   show = true;
@@ -24,7 +25,9 @@ export class PostViewComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private messageService: MessageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.updatePost = null;
+  }
 
   reciverEdit() {
     this.showEdit();
@@ -59,8 +62,7 @@ export class PostViewComponent implements OnInit {
   }
 
   postUpdate(p) {
-    console.log(p);
-    console.log('update');
+    this.updatePost = p;
     this.showEdit();
   }
 
