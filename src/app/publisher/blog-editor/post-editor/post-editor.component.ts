@@ -35,6 +35,7 @@ export class PostEditorComponent implements OnInit {
   ngOnInit() {
     if (this.updatePost) {
       this.toggleButton();
+      this.date = this.updatePost.date;
     }
   }
 
@@ -47,15 +48,17 @@ export class PostEditorComponent implements OnInit {
   }
 
   filterCountryMultiple(event) {
-    // const query = event.query;
-    // this.countryService.getCountries().then(countries => {
-    //    this.filteredCountriesMultiple = this.filterCountry(query, countries);
-    // });
-}
+    /*
+    const query = event.query;
+     this.publisherService.getListLabels().then(countries => {
+        this.filteredCountriesMultiple = this.filterCountry(query, countries);
+     }); */
+  }
 
 filterCountry(query, countries: any[]): any[] {
     // in a real application, make a request to a remote
     // url with the query and return filtered results, for demo we filter at client side
+    console.log(query);
     const filtered: any[] = [];
     for (let i = 0; i < countries.length; i++) {
         const country = countries[i];
@@ -97,4 +100,5 @@ update(post: Post) {
 clear() {
   this.messageService.clear();
 }
+
 }

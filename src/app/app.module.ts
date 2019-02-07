@@ -61,6 +61,9 @@ import {GrowlModule} from 'primeng/growl';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { DatePipe } from './pipes/date.pipe';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { HttpClientModule } from '@angular/common/http';
+import { SkillsComponent } from './publisher/about-me-editor/skills/skills.component';
+import {ChipsModule} from 'primeng/chips';
 
 @NgModule({
   declarations: [
@@ -87,7 +90,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     InterestsComponent,
     PostEditorComponent,
     PostViewComponent,
-    DatePipe
+    DatePipe,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +123,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     GrowlModule,
     AutoCompleteModule,
     InputTextareaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ChipsModule
   ],
   exports:
   [CardComponent],

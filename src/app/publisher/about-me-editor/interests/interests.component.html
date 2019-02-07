@@ -1,3 +1,7 @@
-<p>
-  interests works!
-</p>
+<h4>Add Interests</h4>
+
+<button pButton type="button" label="Update"
+class="ui-button-rounded ui-button-success" (click)="updateInterests()"></button>
+
+<p-chips [(ngModel)]="interests" ></p-chips>
+<br>

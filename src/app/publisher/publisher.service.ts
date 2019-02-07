@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../datasource/post';
 import { SocialMedia } from '../datasource/social-media';
+// import {Http} from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +44,10 @@ export class PublisherService {
     { id: '5', label: 'music' }
   ];
 
-  constructor() { }
+  listLabels: any = ['literature', 'photograph', 'verse', 'dev', 'music' ];
 
+  // constructor(private http: Http) { }
+  constructor () {}
 
   getListMedias() {
     return this.listMedias;
@@ -60,6 +63,15 @@ export class PublisherService {
   getListLabel() {
     return this.listLabel;
   }
+
+  getListLabels() {
+    //  return this.http.get('')
+     //             .toPromise()
+    //              .then(res => <any[]> res.json().data)
+     //             // tslint:disable-next-line:arrow-return-shorthand
+     //             .then(data => { return data; });
+  }
+
 
   getList() {
     return this.list;
