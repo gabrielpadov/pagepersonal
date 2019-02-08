@@ -1,38 +1,47 @@
-import { Skill } from './../../../datasource/skill';
 import { Component, OnInit } from '@angular/core';
-import { title } from 'process';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  styleUrls: ['./skills.component.css'],
+  providers: [MessageService]
 })
 export class SkillsComponent implements OnInit {
 
-  titleSkill: string;
-  skills: string [];
-  skill: any = {
-    title: '',
-    skills: []
-  };
-
-
   listSkills: any [];
+  msgs: Message[] = [];
 
-  constructor() {
-    this.listSkills = [];
+  constructor(private messageService: MessageService) {
+    this.listSkills = [
+      {
+        title: 'a',
+        skills: ['a', 'b', 'c']
+      },
+      {
+        title: 'b',
+        skills: ['c', 'e', 'c']
+      }
+    ];
    }
 
   ngOnInit() {
   }
 
-  updateSkills() {
+  updateSkills(skill) {
 
-    this.skill.title = this.titleSkill;
-    this.skill.skills = this.skills;
+    this.listSkills.push({title: skill.value.title, skills: skill.value.skills});
 
-    this.listSkills.push(this.skill);
+    if (this.listSkills) {
+      this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
+    } else {
+      this.messageService.add({severity: 'error', summary: 'Service Message', detail: 'Have empty fields'});
+    }
 
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
 }

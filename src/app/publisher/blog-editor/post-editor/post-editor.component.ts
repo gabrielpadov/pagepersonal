@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Post } from 'src/app/datasource/post';
 import { ConfirmationService, MessageService, Message } from 'primeng/api';
 import { PublisherService } from '../../publisher.service';
-import {NgForm} from '@angular/forms';
+import {NgForm, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-post-editor',
@@ -14,12 +14,12 @@ export class PostEditorComponent implements OnInit {
 
   @Input() updatePost: Post;
   @Output() showPost = new EventEmitter();
-  filteredCountriesMultiple: any[];
-  countries: any[];
+  typeahead: FormControl = new FormControl();
+  labels: string[];
+  suggestions: string[] = [];
 
    // tslint:disable-next-line:member-ordering
   text1 = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
-
   text2: string;
   msgs: Message[] = [];
   show = true;
@@ -30,6 +30,7 @@ export class PostEditorComponent implements OnInit {
     private messageService: MessageService) {
     this.date = new Date();
     // console.log(this.date);
+    this.labels = publisherService.getListLabels();
   }
 
   ngOnInit() {
@@ -47,58 +48,41 @@ export class PostEditorComponent implements OnInit {
     this.show = !this.show;
   }
 
-  filterCountryMultiple(event) {
-    /*
-    const query = event.query;
-     this.publisherService.getListLabels().then(countries => {
-        this.filteredCountriesMultiple = this.filterCountry(query, countries);
-     }); */
+  suggest() {
+    this.suggestions = this.labels
+      .filter(c => c.startsWith(this.typeahead.value))
+      .slice(0, 5);
   }
 
-filterCountry(query, countries: any[]): any[] {
-    // in a real application, make a request to a remote
-    // url with the query and return filtered results, for demo we filter at client side
-    console.log(query);
-    const filtered: any[] = [];
-    for (let i = 0; i < countries.length; i++) {
-        const country = countries[i];
-        if (country.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
-            filtered.push(country);
+  save(newPost) {
+
+    console.log(newPost.value);
+
+    // this.listMedias.push(this.selectedMedia);
+
+    // this.publisherService.getAddMedias(this.selectedMedia);
+    // this.listMedias = this.publisherService.getListMedias();
+
+    this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
+  }
+
+  update(post: Post) {
+    this.confirmationService.confirm({
+        message: 'Do you want to update this record?',
+        header: 'Changes Confirmation',
+        icon: 'pi pi-info-circle',
+        accept: () => {
+            // this.delete();
+            this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record changed'}];
+        },
+        reject: () => {
+            this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
         }
-    }
-    return filtered;
+    });
   }
 
-
-save(newPost: Post) {
-
-  // console.log(this.selectedMedia);
-
-  // this.listMedias.push(this.selectedMedia);
-
-  // this.publisherService.getAddMedias(this.selectedMedia);
-  // this.listMedias = this.publisherService.getListMedias();
-
-  this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
-}
-
-update(post: Post) {
-  this.confirmationService.confirm({
-      message: 'Do you want to update this record?',
-      header: 'Changes Confirmation',
-      icon: 'pi pi-info-circle',
-      accept: () => {
-          // this.delete();
-          this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record changed'}];
-      },
-      reject: () => {
-          this.msgs = [{severity: 'info', summary: 'Rejected', detail: 'You have rejected'}];
-      }
-  });
-}
-
-clear() {
-  this.messageService.clear();
-}
+  clear() {
+    this.messageService.clear();
+  }
 
 }

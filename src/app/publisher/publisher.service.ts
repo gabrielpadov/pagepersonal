@@ -44,7 +44,7 @@ export class PublisherService {
     { id: '5', label: 'music' }
   ];
 
-  listLabels: any = ['literature', 'photograph', 'verse', 'dev', 'music' ];
+  listLabels: string[] = ['literature', 'photograph', 'verse', 'dev', 'music' ];
 
   // constructor(private http: Http) { }
   constructor () {}
@@ -55,7 +55,7 @@ export class PublisherService {
 
   getAddMedias(media: any) {
 
-    this.listMedias.push(media.value);
+    this.listMedias.push({ link: media.value.link, media: media.value.media });
 
     return true;
   }
@@ -65,6 +65,7 @@ export class PublisherService {
   }
 
   getListLabels() {
+    return this.listLabels;
     //  return this.http.get('')
      //             .toPromise()
     //              .then(res => <any[]> res.json().data)

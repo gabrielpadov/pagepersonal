@@ -1,20 +1,21 @@
 <h3>
   Skills
 </h3>
-
-<button pButton type="button" label="Update"
-class="ui-button-rounded ui-button-success" (click)="updateSkills()"></button>
-
+<form #skill="ngForm" (ngSubmit)="updateSkills(skill); skill.reset();">
 <span class="ui-float-label">
-  <input id="float-input" type="text" size="30" [(ngModel)]="titleSkill" pInputText>
+  <input id="float-input" type="text" size="30" required ngModel name ="title" pInputText>
   <label for="float-input">Title</label>
 </span>
-<p-chips [(ngModel)]="skills" ></p-chips>
+<p-chips ngModel name="skills" required ></p-chips>
 
+<button pButton type="submit" label="Add" icon="pi pi-plus"
+class="ui-button-rounded ui-button-success" [disabled]="!skill.valid"></button>
+</form>
+<hr>
 
-<div *ngFor="let item of listSkills" >
-  <h5>{{ item.title }}</h5>
-  <ul>
-    <li *ngFor="let s of item.skills">{{ s }}</li>
-  </ul>
-</div>
+<ul class="collection with-header" *ngFor="let item of listSkills">
+  <li class="collection-header"><h4>{{ item.title }}</h4></li>
+  <li class="collection-item" *ngFor="let s of item.skills">{{ s }}</li>
+</ul>
+
+<p-growl [value]="msgs"></p-growl>
