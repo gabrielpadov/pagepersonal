@@ -1,3 +1,20 @@
-<p>
-  skills works!
-</p>
+<h3>
+  Skills
+</h3>
+
+<button pButton type="button" label="Update"
+class="ui-button-rounded ui-button-success" (click)="updateSkills()"></button>
+
+<span class="ui-float-label">
+  <input id="float-input" type="text" size="30" [(ngModel)]="titleSkill" pInputText>
+  <label for="float-input">Title</label>
+</span>
+<p-chips [(ngModel)]="skills" ></p-chips>
+
+
+<div *ngFor="let item of listSkills" >
+  <h5>{{ item.title }}</h5>
+  <ul>
+    <li *ngFor="let s of item.skills">{{ s }}</li>
+  </ul>
+</div>

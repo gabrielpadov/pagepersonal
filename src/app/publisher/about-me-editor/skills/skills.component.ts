@@ -1,4 +1,6 @@
+import { Skill } from './../../../datasource/skill';
 import { Component, OnInit } from '@angular/core';
+import { title } from 'process';
 
 @Component({
   selector: 'app-skills',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-  constructor() { }
+  titleSkill: string;
+  skills: string [];
+  skill: any = {
+    title: '',
+    skills: []
+  };
+
+
+  listSkills: any [];
+
+  constructor() {
+    this.listSkills = [];
+   }
 
   ngOnInit() {
+  }
+
+  updateSkills() {
+
+    this.skill.title = this.titleSkill;
+    this.skill.skills = this.skills;
+
+    this.listSkills.push(this.skill);
+
   }
 
 }
