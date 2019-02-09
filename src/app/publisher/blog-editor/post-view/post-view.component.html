@@ -1,0 +1,35 @@
+<div *ngIf="show">
+
+<h4 *ngIf="!postList">No posts!</h4>
+
+<h4 *ngIf="postList">My posts</h4>
+
+<a class="btn-floating waves-effect waves-light blue right" (click)="postNew( )">
+      <i class="material-icons">add</i></a>
+
+<ngb-pagination *ngIf="postList" [collectionSize]="postList.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+
+<ul class="collection">
+  <li class="collection-item" *ngFor="let p of postList | slice: pageSize | slice: 0:itemsPerPage">
+    <div>{{ p.title | slice:0:40 }}{{ p.title.length >= 40 ? '...' : '' }} <b style="margin-left: 10px;">{{ p.date }}</b>
+      <div class="secondary-content">
+        <a class="waves-effect waves-light" (click)="postUpdate( p.id )" ><i class="material-icons" style="color:green; cursor:pointer;">edit</i></a>
+        <a class="waves-effect waves-light" (click)="postView( p )"><i class="material-icons" style="color:black; cursor:pointer;">pageview</i></a>
+        <a class="waves-effect waves-light" (click)="postDelete( p.id )" ><i class="material-icons" style="color:red; cursor:pointer;">delete</i></a>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-growl [value]="msgs"></p-growl>
+
+<p-dialog header="" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+        [maximizable]="true" [baseZIndex]="10000">
+        <app-post [post]="post"></app-post>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Return" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>
+</div>
+<app-post-editor [updatePost]="updatePost" (showPost)="reciverEdit($event)" *ngIf="!show"></app-post-editor>

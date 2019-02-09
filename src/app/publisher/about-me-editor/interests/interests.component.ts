@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterestsComponent implements OnInit {
 
-  constructor() { }
+  interests: string [];
+
+  constructor() {
+    this.interests = [ 'dev ops', 'front',
+      'back', 'learning Machine'
+    ];
+  }
 
   ngOnInit() {
+  }
+
+  updateInterests() {
+    console.log(this.interests);
   }
 
 }

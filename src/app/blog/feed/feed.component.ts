@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Post } from './../../datasource/post';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-feed',
@@ -9,10 +10,12 @@ export class FeedComponent implements OnInit {
 
   @Input() posts: any[];
   @Input() labels: any;
+  @Output() showPost = new EventEmitter();
   auxPost: any[];
   aux: any;
   aux2;
   aux3: string;
+  post: Post;
 
   constructor() {  }
 
@@ -36,6 +39,10 @@ export class FeedComponent implements OnInit {
         }
       }
     }
+  }
+
+  viewPost(p) {
+    this.showPost.emit(this.post = p);
   }
 
 }

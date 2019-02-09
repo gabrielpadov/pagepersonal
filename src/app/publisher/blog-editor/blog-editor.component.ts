@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PublisherService } from '../publisher.service';
+import { Post } from 'src/app/datasource/post';
 
 @Component({
   selector: 'app-blog-editor',
@@ -7,13 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogEditorComponent implements OnInit {
 
-  constructor() { }
+  postList: Post [];
 
-
-  // tslint:disable-next-line:member-ordering
-  text1 = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
-
-  text2: string;
+  constructor(publisherService: PublisherService) {
+    this.postList = publisherService.getList(); }
 
   ngOnInit() {
   }

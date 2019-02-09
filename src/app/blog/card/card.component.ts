@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Post } from './../../datasource/post';
 
 @Component({
   selector: 'app-card',
@@ -12,8 +13,8 @@ export class CardComponent implements OnInit {
   pageSize: number;
 
   @Input() posts: any = [];
-
-  display = false;
+  @Output() showPost = new EventEmitter();
+  post: Post;
 
   constructor() { }
 
@@ -25,8 +26,8 @@ export class CardComponent implements OnInit {
     this.itemsPerPage = this.pageSize + num;
   }
 
-  showDialog() {
-    this.display = true;
+  viewPost(p) {
+    this.showPost.emit(this.post = p);
   }
 
   ngOnInit() {

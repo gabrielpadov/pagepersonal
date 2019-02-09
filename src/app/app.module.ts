@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterializeModule, MaterializeDirective } from 'angular2-materialize';
@@ -13,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './about-me/login/login.component';
 import { AuthService } from './about-me/login/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { AboutMeGuard } from './guards/aboutMe.guard';
 import { FormComponent } from './about-me/form/form.component';
@@ -55,6 +54,16 @@ import { EducationComponent } from './publisher/about-me-editor/education/educat
 import { InterestsComponent } from './/publisher/about-me-editor/interests/interests.component';
 import { PublisherService } from './publisher/publisher.service';
 import {TooltipModule} from 'primeng/tooltip';
+import { AppService } from './app.service';
+import { PostEditorComponent } from './publisher/blog-editor/post-editor/post-editor.component';
+import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.component';
+import {GrowlModule} from 'primeng/growl';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import { DatePipe } from './pipes/date.pipe';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import { HttpClientModule } from '@angular/common/http';
+import { SkillsComponent } from './publisher/about-me-editor/skills/skills.component';
+import {ChipsModule} from 'primeng/chips';
 
 @NgModule({
   declarations: [
@@ -78,7 +87,11 @@ import {TooltipModule} from 'primeng/tooltip';
     UserComponent,
     OccupationComponent,
     EducationComponent,
-    InterestsComponent
+    InterestsComponent,
+    PostEditorComponent,
+    PostViewComponent,
+    DatePipe,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +119,13 @@ import {TooltipModule} from 'primeng/tooltip';
     MessageModule,
     ToastModule,
     ToolbarModule,
-    TooltipModule
+    TooltipModule,
+    GrowlModule,
+    AutoCompleteModule,
+    InputTextareaModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ChipsModule
   ],
   exports:
   [CardComponent],
@@ -117,7 +136,8 @@ import {TooltipModule} from 'primeng/tooltip';
     SocialMediaService,
     BlogService,
     ConfirmationService,
-    PublisherService
+    PublisherService,
+    AppService
     ],
   bootstrap: [AppComponent]
 })

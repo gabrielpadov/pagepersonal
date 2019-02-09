@@ -1,0 +1,67 @@
+<div class="container">
+
+  <h3 class="first">Edit post!</h3>
+
+  <hr>
+
+<form #post="ngForm" (ngSubmit)="save(post)" >
+  <span class="ui-float-label">
+    <input id="float-input" type="date" size="10" ngModel name="datea" styleClass="wid100"
+     pInputText>
+    <label for="float-input">Date</label>
+  </span>
+  <br>
+  <p>{{ date | formatDate }}</p>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" name="title" ngModel required size="30" pInputText>
+    <label for="float-input">Title</label>
+  </span>
+
+  <span class="ui-float-label">
+    <textarea [rows]="5" [cols]="30" name="preview" ngModel pInputTextarea
+    autoResize="autoResize"></textarea>
+    <label for="float-input">Preview</label></span>
+
+  <hr>
+  <span><label>Content</label>
+  <p-editor name="content" ngModel required [style]="{'height':'320px'}"></p-editor>
+  </span>
+  <hr>
+
+  <!----span><label>Labels</label>
+    <p-chips ngModel name="skills" required
+    [formControl]="typeahead" (input)="suggest()" ></p-chips>
+    <div class="suggestions" *ngIf="suggestions.length">
+      <p *ngFor="let s of suggestions">{{s}}</p>
+    </div>
+  </span--->
+
+  <hr>
+
+  <button style="margin-right: 2.5px;" pButton type="button" label="Clear"
+  icon="pi pi-times" class="ui-button-danger" (click)="post.reset()"></button>
+
+  <button style="margin-right: 2.5px;" pButton type="submit" label="Save"
+    icon="pi pi-check" class="ui-button-success" *ngIf="show"
+    [disabled]="!post.valid" ></button>
+
+  <button style="margin-right: 2.5px;" pButton type="submit" label="Upload"
+    icon="pi pi-upload" class="ui-button-warning" *ngIf="!show"
+    [disabled]="!post.valid"></button>
+
+  </form>
+  <hr>
+
+  <button style="margin-right: 2.5px;" pButton type="button" label="Back"
+   icon="pi pi-chevron-left" class="ui-button-info" (click)="toBack()"></button>
+
+  <hr>
+
+</div>
+
+<p>Value: {{text1||'empty'}}</p>
+
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-growl [value]="msgs"></p-growl>
