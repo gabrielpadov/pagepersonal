@@ -64,6 +64,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import { HttpClientModule } from '@angular/common/http';
 import { SkillsComponent } from './publisher/about-me-editor/skills/skills.component';
 import {ChipsModule} from 'primeng/chips';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import {ChipsModule} from 'primeng/chips';
     InputTextareaModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ChipsModule
+    ChipsModule,
+    FileUploadModule
   ],
   exports:
   [CardComponent],
