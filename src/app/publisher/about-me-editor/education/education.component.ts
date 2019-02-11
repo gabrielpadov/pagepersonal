@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducationComponent implements OnInit {
 
+  dateStart: Date;
+
+  dateEnd: Date;
+
+  date1: Date;
+  date2: Date;
+
   constructor() { }
 
   ngOnInit() {

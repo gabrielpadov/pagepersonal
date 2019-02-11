@@ -65,6 +65,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SkillsComponent } from './publisher/about-me-editor/skills/skills.component';
 import {ChipsModule} from 'primeng/chips';
 import {FileUploadModule} from 'primeng/fileupload';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     ReactiveFormsModule,
     HttpClientModule,
     ChipsModule,
-    FileUploadModule
+    FileUploadModule,
+    CalendarModule
   ],
   exports:
   [CardComponent],

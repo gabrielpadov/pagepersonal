@@ -24,22 +24,16 @@
 <div class="divider"></div>
 
 <section>
-  <p-card header="Social media list">
-    <div class="row">
-      <div class="col s6 m6 l4"  *ngFor="let m of listMedias">
-        <div class="card teal lighten-4">
-          <div class="card-content black-text">
-            <p>
-              <i class="small fa fa-{{ m.media }}"></i>  {{ m.link }}
-            </p>
-          </div>
-          <div class="card-action">
-            <button pButton (click)="delete(m.id)" type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
-          </div>
-        </div>
+  <ul class="collection">
+    <li class="collection-item avatar" *ngFor="let m of listMedias">
+      <a class="tooltipped" data-position="bottom" data-tooltip="Test!" target="_blank" href="https://{{ m.link }}">
+        <i class="small fa fa-{{ m.media }} left"></i></a>
+        <p>{{ m.link }}</p>
+      <div class="secondary-content">
+        <button pButton type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
       </div>
-    </div>
-  </p-card>
+    </li>
+  </ul>
 </section>
 
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

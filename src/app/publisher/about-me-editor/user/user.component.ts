@@ -10,22 +10,24 @@ import { MessageService } from 'primeng/api';
 export class UserComponent implements OnInit {
   model: any = {};
   modelM: any = {};
-  uploadedFiles: any[] = [];
+  uploadedFiles: any;
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 
-  onSubmit1() {
+  onSubmitM() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.modelM));
   }
 
   constructor(private messageService: MessageService) {}
 
   onUpload(event) {
-      for (const file of event.files) {
-          this.uploadedFiles.push(file);
-      }
-
+     // for (const file of event.files) {
+          this.uploadedFiles = event.file;
+      // }
+    console.log(event);
+    console.log(event.file);
+    console.log(this.uploadedFiles);
       this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
 
