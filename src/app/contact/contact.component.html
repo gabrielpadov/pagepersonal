@@ -2,173 +2,81 @@
 <!-- Modal Structure email -->
 <div id="contact-modal" class="modal">
   <div class="modal-content">
-  <!-- form contact
-      <form materialize class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input [(ngModel)]="firstName" name="firstName" placeholder="Placeholder" id="first_name" type="text" class="validate" [disabled]="isDisabled?true:null">
-              <label for="first_name">First Name</label>
+  <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+    <p-panel header="Validate">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="name" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Name is required" *ngIf="!contactForm.controls['name'].valid&&contactForm.controls['name'].dirty"></p-message>
+                </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate" [disabled]="isDisabled?true:null">
-              <label for="last_name">Last Name</label>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Last Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="lastname" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Lastname is required" *ngIf="!contactForm.controls['lastname'].valid&&contactForm.controls['lastname'].dirty"></p-message>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input type="text" name="autoComplete" materialize="autocomplete" [materializeParams]="[autocompleteInit]" [disabled]="isDisabled?true:null">
-              <label for="autoComplete">Autocomplete (Apple/Google)</label>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Password *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
+                </div>
+                <div class="ui-grid-col-4">
+                <p-message severity="error" [text]="contactForm.controls['password'].errors['required'] ? 'Password is required' : contactForm.controls['password'].errors['minlength'] ? 'Must be longer than 6 characters' : ''"
+                        *ngIf="!contactForm.controls['password'].valid&&contactForm.controls['password'].dirty"></p-message>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-              <label for="disabled">Disabled</label>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Message:
+                </div>
+                <div class="ui-grid-col-6">
+                    <textarea pInputTextarea type="text" formControlName="message"></textarea>
+                </div>
+                <div class="ui-grid-col-4"></div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" placeholder="" class="validate" [disabled]="isDisabled?true:null">
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate" [disabled]="isDisabled?true:null">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate" [disabled]="isDisabled?true:null">
-              <label for="icon_prefix">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">phone</i>
-              <input id="icon_telephone" type="tel" class="validate" [disabled]="isDisabled?true:null">
-              <label for="icon_telephone">Telephone</label>
-            </div>
-          </div>
-          <div class="row file-field input-field">
-            <div class="btn">
-              <span>File</span>
-              <input type="file" (change)="onFileSelection($event)">
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <input materialize="pickadate" type="date" class="datepicker" [disabled]="isDisabled?true:null">
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea" materialize="characterCounter" [attr.length]="maxLength" [disabled]="isDisabled?true:null"></textarea>
-              <label for="textarea1">Textarea</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <select name="singleSelect" [(ngModel)]="selectedOption" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
-                <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
-              </select>
-              <label>Materialize Select</label>
-            </div>
-            <div class="input-field col s6">
-              <select name="multiSelect" [(ngModel)]="selectedOptions" multiple materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
-                <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
-              </select>
-              <label>Materialize Multi Select</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s6 switch">
-              <div class="switch">
-                <label>
-                  Off
-                  <input type="checkbox" [disabled]="isDisabled?true:null">
-                  <span class="lever"></span>
-                  On
-                </label>
+            <!--div class="ui-grid-row">
+              <div class="ui-grid-col-2"></div>
+              <div class="ui-grid-col-6">
+                <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+                <p-captcha siteKey=""
+                 (onResponse)="showResponse($event)"></p-captcha>
               </div>
-              <br/>
-              <p>
-                <input type="checkbox" id="test5" [checked]="isTest5Checked" [disabled]="isDisabled?true:null"/>
-                <label for="test5">Red</label>
-              </p>
-              <p>
-                <input type="checkbox" id="test6" name="test6" [(ngModel)]="isTest6Checked" [disabled]="isDisabled?true:null"/>
-                <label for="test6">Yellow</label>
-              </p>
-              <p>
-                <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" [disabled]="isDisabled?true:null"/>
-                <label for="filled-in-box">Filled in</label>
-              </p>
-              <p>
-                <input type="checkbox" id="indeterminate-checkbox" [disabled]="isDisabled?true:null"/>
-                <label for="indeterminate-checkbox">Indeterminate Style</label>
-              </p>
+              <div class="ui-grid-col-4"></div>
+            </div-->
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-6">
+                    <button pButton type="submit" label="Submit" [disabled]="!contactForm.valid"></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
             </div>
-            <div class="col s6">Value: {{isTest6Checked}}</div>
-          </div>
-          <div class="row">
-            <div class="col s6">
-              <p>
-                <input name="group1" type="radio" id="test1" [(ngModel)]="radioButtonValue" [value]="1" [disabled]="isDisabled?true:null"/>
-                <label for="test1">Red</label>
-              </p>
-              <p>
-                <input name="group1" type="radio" id="test2" [(ngModel)]="radioButtonValue" [value]="2" [disabled]="isDisabled?true:null"/>
-                <label for="test2">Yellow</label>
-              </p>
-              <p>
-                <input class="with-gap" name="group1" type="radio" id="test3" [(ngModel)]="radioButtonValue" [value]="3" [disabled]="isDisabled?true:null"/>
-                <label for="test3">Green</label>
-              </p>
-                <p>
-                  <input name="group1" type="radio" id="test4" disabled="disabled"/>
-                  <label for="test4">Brown</label>
-              </p>
-            </div>
-            <div class="col s6">Value: {{radioButtonValue}}</div>
-          </div>
-        </form>
-        <br/><hr/><br/>
-        <a class="waves-effect waves-light btn" (click)="isDisabled=!isDisabled">{{isDisabled?"Enable":"Disable"}} Form</a>
-        <br/><br/><hr/><br/>
-        <div class="row">
-          <div class="col s6">First Name: {{firstName}}</div>
+              <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                  Form Submitted
+                  <br>
+                  {{diagnostic}}
+              </div>
         </div>
-        <div class="row">
-          <div class="col s6">Selected Option: {{selectedOption}}</div>
-        </div>
-        <div class="row">
-          <div class="col s6">Selected Options: {{selectedOptions}}</div>
-        </div>
-  <!-- form contact end-->
-
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
-    <div formGroupName="personalData" novalidate>
-      <input formControlName="email">
-      <input formControlName="mobile">
-      <select formControlName="country">
-        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-      </select>
-    </div>
-    <select formControlName="requestType">
-      <option *ngFor="let requestType of requestTypes" [value]="requestType">{{requestType}}</option>
-    </select>
-    <input formControlName="text">
-    <button type="submit" [disabled]="contactForm.pristine">Save</button>
-    <button type="reset" (click)="revert()" [disabled]="contactForm.pristine">Revert</button>
+    </p-panel>
   </form>
-
 </div>
-<div class="modal-footer teal accent-4">
-  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  <a  onclick="$('#email-modal').modal('close');" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-</div>
+  <div class="modal-footer teal accent-4">
+    <a onclick="$('#email-modal').modal('close');" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
 </div>

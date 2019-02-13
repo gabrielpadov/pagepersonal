@@ -1,73 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { PersonalData, ContactRequest } from '../datasource/contact-request';
+import {Component, OnInit} from '@angular/core';
+import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
+import {MessageService, SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  providers: [MessageService]
 })
 export class ContactComponent implements OnInit {
 
-  contactForm: FormGroup;
-  countries = ['USA', 'Germany', 'Italy', 'France'];
-  requestTypes = ['Claim', 'Feedback', 'Help Request'];
+    contactForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.contactForm = this.createFormGroup();
-   // this.contactForm = this.createFormGroupWithBuilder();
-   // this.contactForm = this.createFormGroupWithBuilderAndModel();
-  }
+    submitted: boolean;
 
-  ngOnInit() {
-  }
+    message: string;
 
-  createFormGroupWithBuilder(formBuilder: FormBuilder) {
-    return formBuilder.group({
-      personalData: formBuilder.group({
-        email: 'defaul@email.com',
-        mobile: '',
-        country: ''
-      }),
-      requestType: '',
-      text: ''
-    });
-  }
+    constructor(private fb: FormBuilder, private messageService: MessageService) { }
 
-  createFormGroup() {
-    return new FormGroup({
-      personalData: new FormGroup({
-        email: new FormControl(),
-        mobile: new FormControl(),
-        country: new FormControl()
-        }),
-      requestType: new FormControl(),
-      text: new FormControl
-      });
-  }
+    ngOnInit() {
+        this.contactForm = this.fb.group({
+            'name': new FormControl('', Validators.required),
+            'email': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+            'message': new FormControl('', Validators.required)
+        });
+    }
 
-  createFormGroupWithBuilderAndModel(formBuilder: FormBuilder) {
-    return formBuilder.group({
-      personalData: formBuilder.group(new PersonalData()),
-      requestType: '',
-      text: ''
-    });
-  }
+    onSubmit(value: string) {
+        this.submitted = true;
+        this.messageService.add({severity: 'info', summary: 'Success',
+          detail: 'Form Submitted'});
+    }
 
-  onSubmit() {
-    // Make sure to create a deep copy of the form-model
-    const result: ContactRequest = Object.assign({}, this.contactForm.value);
-    result.personalData = Object.assign({}, result.personalData);
+    get diagnostic() { return JSON.stringify(this.contactForm.value); }
 
-    // Do useful stuff with the gathered data
-    console.log(result);
-  }
-
-  revert() {
-    // Resets to blank object
-    this.contactForm.reset();
-
-    // Resets to provided model
-    this.contactForm.reset({ personalData: new PersonalData(), requestType: '', text: '' });
+    showResponse(event) {
+      this.messageService.add({severity: 'info', summary: 'Succees', detail: 'User Responded', sticky: true});
   }
 }

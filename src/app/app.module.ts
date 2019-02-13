@@ -66,6 +66,7 @@ import { SkillsComponent } from './publisher/about-me-editor/skills/skills.compo
 import {ChipsModule} from 'primeng/chips';
 import {FileUploadModule} from 'primeng/fileupload';
 import {CalendarModule} from 'primeng/calendar';
+import {CaptchaModule} from 'primeng/captcha';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import {CalendarModule} from 'primeng/calendar';
     HttpClientModule,
     ChipsModule,
     FileUploadModule,
-    CalendarModule
+    CalendarModule,
+    CaptchaModule
   ],
   exports:
   [CardComponent],
