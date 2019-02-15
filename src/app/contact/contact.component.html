@@ -5,51 +5,47 @@
   <p-toast [style]="{marginTop: '80px'}"></p-toast>
 
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
-    <p-panel header="Validate">
+    <!--p-panel header="Contact"-->
+
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Name *:
-                </div>
+            <h5>Contact</h5>
+          <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="name" placeholder="Required"/>
-                </div>
+                    <span class="ui-float-label">
+                    <input pInputText type="text" formControlName="name"/>
+                    <label for="float-input">Name</label></span>
+                  </div>
                 <div class="ui-grid-col-4">
                     <p-message severity="error" text="Name is required" *ngIf="!contactForm.controls['name'].valid&&contactForm.controls['name'].dirty"></p-message>
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Last Name *:
-                </div>
+                <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="lastname" placeholder="Required"/>
+                    <span class="ui-float-label">
+                    <input pInputText type="email" formControlName="email" />
+                    <label for="float-input">Email</label></span>
                 </div>
                 <div class="ui-grid-col-4">
-                    <p-message severity="error" text="Lastname is required" *ngIf="!contactForm.controls['lastname'].valid&&contactForm.controls['lastname'].dirty"></p-message>
+                <p-message severity="error" [text]="contactForm.controls['email'].errors['required'] ? 'Email is required' : contactForm.controls['email'].errors['email'] ? 'Invalid email' : ''"
+                        *ngIf="!contactForm.controls['email'].valid&&contactForm.controls['email'].dirty"></p-message>
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Password *:
-                </div>
+                <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
+                    <span class="ui-float-label">
+                    <textarea style="height: 50px;" class="ui-state-default ui-inputtext" [rows]="5" [cols]="30" pInputTextarea autoResize="true" type="text" formControlName="message"></textarea>
+                    <label for="float-input">Message</label></span>
                 </div>
                 <div class="ui-grid-col-4">
-                <p-message severity="error" [text]="contactForm.controls['password'].errors['required'] ? 'Password is required' : contactForm.controls['password'].errors['minlength'] ? 'Must be longer than 6 characters' : ''"
-                        *ngIf="!contactForm.controls['password'].valid&&contactForm.controls['password'].dirty"></p-message>
+                  <p-message severity="error" text="Message is required"
+                    *ngIf="!contactForm.controls['message'].valid&&contactForm.controls['message'].dirty">
+                  </p-message>
                 </div>
             </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Message:
-                </div>
-                <div class="ui-grid-col-6">
-                    <textarea pInputTextarea type="text" formControlName="message"></textarea>
-                </div>
-                <div class="ui-grid-col-4"></div>
-            </div>
+
             <!--div class="ui-grid-row">
               <div class="ui-grid-col-2"></div>
               <div class="ui-grid-col-6">
@@ -60,10 +56,14 @@
               </div>
               <div class="ui-grid-col-4"></div>
             </div-->
+            <br>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2"></div>
-                <div class="ui-grid-col-6">
-                    <button pButton type="submit" label="Submit" [disabled]="!contactForm.valid"></button>
+                <div class="ui-grid-col-3">
+                    <button pButton type="submit" label="Send" [disabled]="!contactForm.valid"></button>
+                </div>
+                <div class="ui-grid-col-3">
+                    <button pButton type="button" (click)="contactForm.reset()" label="Clear" ></button>
                 </div>
                 <div class="ui-grid-col-4"></div>
             </div>
@@ -73,7 +73,7 @@
                   {{diagnostic}}
               </div>
         </div>
-    </p-panel>
+    <!--/p-panel-->
   </form>
 </div>
   <div class="modal-footer teal accent-4">

@@ -1,11 +1,115 @@
-<p>
-  education works!
-</p>
+<section>
+<h4>Education information</h4>
 
+<form [formGroup]="educationForm" (ngSubmit)="onSubmit(educationForm.value)">
 
-      <p-calendar [(ngModel)]="dateStart" view="month" dateFormat="mm/yy"></p-calendar>
-  <br>
-  <br>
-      <p-calendar [(ngModel)]="dateEnd" view="month" dateFormat="mm/yy"></p-calendar>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
 
+    <div class="ui-grid-row"><!---DATE-->
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-2">
+        <span class="ui-float-label">
+        <p-calendar formControlName="dateStart" view="month" dateFormat="mm/yy"></p-calendar>
+        <label for="float-input">Begin</label></span>
+      </div>
+      <div class="ui-grid-col-2">
+        <span class="ui-float-label">
+        <p-calendar formControlName="dateEnd" view="month" dateFormat="mm/yy"></p-calendar>
+        <label for="float-input">End</label></span>
+        <div class="ui-grid-col-2">
+          <p-checkbox value="null" label="Actual"
+            formControlName="dateEnd" ></p-checkbox>
+        </div>
+        </div>
+    </div>
 
+    <div class="ui-grid-row"><!---INSTITUTION-->
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+              <span class="ui-float-label">
+              <input pInputText type="text" formControlName="institution"/>
+              <label for="float-input">Institution</label></span>
+            </div>
+          <div class="ui-grid-col-4">
+              <p-message severity="error" text="institution is required"
+                *ngIf="!educationForm.controls['institution'].valid && educationForm.controls['institution'].dirty">
+              </p-message>
+          </div>
+      </div>
+
+      <div class="ui-grid-row"><!---COURSE-->
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+            <span class="ui-float-label">
+            <input pInputText type="text" formControlName="course"/>
+            <label for="float-input">Course</label></span>
+          </div>
+        <div class="ui-grid-col-4">
+            <p-message severity="error" text="Course is required"
+              *ngIf="!educationForm.controls['course'].valid && educationForm.controls['course'].dirty">
+            </p-message>
+        </div>
+    </div>
+
+    <div class="ui-grid-row"><!---DESCRIPTION-->
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-6">
+          <span class="ui-float-label">
+          <input pInputText type="text" formControlName="description"/>
+          <label for="float-input">Description</label></span>
+        </div>
+      <div class="ui-grid-col-4">
+          <p-message severity="error" text="Description is required"
+            *ngIf="!educationForm.controls['description'].valid && educationForm.controls['description'].dirty">
+          </p-message>
+      </div>
+    </div>
+
+      <div class="ui-grid-row"><!---NOTE-->
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+              <span class="ui-float-label">
+              <textarea style="height: 50px;" class="ui-state-default ui-inputtext"
+               [rows]="5" [cols]="30" pInputTextarea autoResize="true" type="text"
+                formControlName="note"></textarea>
+              <label for="float-input">Note</label></span>
+          </div>
+          <div class="ui-grid-col-4">
+            <p-message severity="error" text="Note is required"
+              *ngIf="!educationForm.controls['note'].valid && educationForm.controls['note'].dirty">
+            </p-message>
+          </div>
+      </div>
+
+      <br>
+      <div class="ui-grid-row">
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-3">
+              <button pButton type="submit" label="Send" [disabled]="!educationForm.valid"></button>
+          </div>
+          <div class="ui-grid-col-3">
+              <button pButton type="button" (click)="educationForm.reset()" label="Clear" ></button>
+          </div>
+          <div class="ui-grid-col-4"></div>
+      </div>
+        <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+            Form Submitted
+            <br>
+            {{diagnostic}}
+        </div>
+</div>
+
+</form>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p>result</p>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6"></div>
+      <div class="ui-grid-col-6"></div>
+    </div>
+  </div>
+</section>

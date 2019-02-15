@@ -1,3 +1,4 @@
+import { ContactService } from './contact/contact.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -67,6 +68,7 @@ import {ChipsModule} from 'primeng/chips';
 import {FileUploadModule} from 'primeng/fileupload';
 import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -131,7 +133,8 @@ import {CaptchaModule} from 'primeng/captcha';
     ChipsModule,
     FileUploadModule,
     CalendarModule,
-    CaptchaModule
+    CaptchaModule,
+    CheckboxModule
   ],
   exports:
   [CardComponent],
@@ -143,7 +146,8 @@ import {CaptchaModule} from 'primeng/captcha';
     BlogService,
     ConfirmationService,
     PublisherService,
-    AppService
+    AppService,
+    ContactService
     ],
   bootstrap: [AppComponent]
 })

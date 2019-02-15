@@ -1,6 +1,8 @@
+import { ContactService } from './contact.service';
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
-import {MessageService, SelectItem} from 'primeng/api';
+import {MessageService} from 'primeng/api';
+
 
 @Component({
   selector: 'app-contact',
@@ -10,31 +12,37 @@ import {MessageService, SelectItem} from 'primeng/api';
 })
 export class ContactComponent implements OnInit {
 
+    constructor(private fb: FormBuilder, private messageService: MessageService, public contactService: ContactService) { }
+
     contactForm: FormGroup;
 
     submitted: boolean;
 
     message: string;
 
-    constructor(private fb: FormBuilder, private messageService: MessageService) { }
-
     ngOnInit() {
         this.contactForm = this.fb.group({
             'name': new FormControl('', Validators.required),
-            'email': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+            'email': new FormControl('', Validators.compose([Validators.required, Validators.email])),
             'message': new FormControl('', Validators.required)
         });
     }
 
-    onSubmit(value: string) {
+    get diagnostic() { return JSON.stringify(this.contactForm.value); }
+
+    onSubmit(value) {
         this.submitted = true;
         this.messageService.add({severity: 'info', summary: 'Success',
           detail: 'Form Submitted'});
+       // this.contactForm.reset();
+        /* this.contactService.sendMessage(value).subscribe(() => {
+          console.log('Formulario de contacto', 'Mensaje enviado correctamente', 'success');
+         });
+       } */
     }
-
-    get diagnostic() { return JSON.stringify(this.contactForm.value); }
 
     showResponse(event) {
       this.messageService.add({severity: 'info', summary: 'Succees', detail: 'User Responded', sticky: true});
-  }
+    }
+
 }
