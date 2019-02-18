@@ -1,7 +1,8 @@
 <section>
-<h4>Education information</h4>
-
-<form [formGroup]="educationForm" (ngSubmit)="onSubmit(educationForm.value)">
+<h5>Education information</h5>
+<hr>
+<br>
+<form [formGroup]="educationForm" (ngSubmit)="onEducation(educationForm.value)">
 
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
 
@@ -12,15 +13,26 @@
         <p-calendar formControlName="dateStart" view="month" dateFormat="mm/yy"></p-calendar>
         <label for="float-input">Begin</label></span>
       </div>
-      <div class="ui-grid-col-2">
-        <span class="ui-float-label">
-        <p-calendar formControlName="dateEnd" view="month" dateFormat="mm/yy"></p-calendar>
-        <label for="float-input">End</label></span>
-        <div class="ui-grid-col-2">
-          <p-checkbox value="null" label="Actual"
-            formControlName="dateEnd" ></p-checkbox>
+      <div class="ui-grid-col-4">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-6">
+            <span class="ui-float-label">
+            <p-calendar formControlName="dateEnd" view="month" [disabled]="dateDisabled" dateFormat="mm/yy"></p-calendar>
+            <label for="float-input">End</label></span>
+            </div>
+            <div class="ui-grid-col-1"></div>
+          <div class="ui-grid-col-5">
+            <p-checkbox value="null" label="Actual" (click)="toogleDateEnd()"
+              formControlName="dateEnd"></p-checkbox>
+          </div>
         </div>
-        </div>
+      </div>
+    <div class="ui-grid-col-4">
+        <p-message severity="error" text="Date is required"
+          *ngIf="!educationForm.controls['dateStart'].valid && educationForm.controls['dateStart'].dirty
+          || !educationForm.controls['dateEnd'].valid && educationForm.controls['dateEnd'].dirty">
+        </p-message>
+    </div>
     </div>
 
     <div class="ui-grid-row"><!---INSTITUTION-->
@@ -99,7 +111,85 @@
         </div>
 </div>
 
+</form><br>
+
+<h5>Complementary courses and other activities</h5>
+<hr>
+<br>
+<form [formGroup]="complementForm" (ngSubmit)="onComplement(complementForm.value)">
+
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2"><!---DATE-->
+          <span class="ui-float-label">
+            <p-calendar formControlName="dateComp" view="month" dateFormat="mm/yy"></p-calendar>
+            <label for="float-input">Conclusion</label></span>
+      </div>
+      <div class="ui-grid-col-6"><!---INSTITUTION-->
+          <span class="ui-float-label">
+          <input pInputText type="text" formControlName="institution"/>
+          <label for="float-input">Institution</label></span>
+        </div>
+      <div class="ui-grid-col-4">
+          <p-message severity="error" text="institution is required"
+            *ngIf="!complementForm.controls['institution'].valid && complementForm.controls['institution'].dirty">
+          </p-message>
+          <p-message severity="error" text="Date is required"
+            *ngIf="!complementForm.controls['dateComp'].valid && complementForm.controls['dateComp'].dirty">
+        </p-message>
+      </div>
+    </div>
+
+      <div class="ui-grid-row"><!---COURSE-->
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+            <span class="ui-float-label">
+            <input pInputText type="text" formControlName="course"/>
+            <label for="float-input">Course</label></span>
+          </div>
+        <div class="ui-grid-col-4">
+            <p-message severity="error" text="Course is required"
+              *ngIf="!complementForm.controls['course'].valid && complementForm.controls['course'].dirty">
+            </p-message>
+        </div>
+    </div>
+
+    <div class="ui-grid-row"><!---NOTE-->
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-6">
+          <span class="ui-float-label">
+          <textarea style="height: 50px;" class="ui-state-default ui-inputtext"
+           [rows]="5" [cols]="30" pInputTextarea autoResize="true" type="text"
+            formControlName="note"></textarea>
+          <label for="float-input">Note</label></span>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Note is required"
+          *ngIf="!complementForm.controls['note'].valid && complementForm.controls['note'].dirty">
+        </p-message>
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-3">
+            <button pButton type="submit" label="Send" [disabled]="!complementForm.valid"></button>
+        </div>
+        <div class="ui-grid-col-3">
+            <button pButton type="button" (click)="complementForm.reset()" label="Clear" ></button>
+        </div>
+        <div class="ui-grid-col-4"></div>
+    </div>
+      <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+          Form Submitted
+          <br>
+          {{diagnostic1}}
+      </div>
+</div>
+
 </form>
+
 </section>
 
 <div class="divider"></div>
@@ -108,8 +198,31 @@
   <p>result</p>
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
     <div class="ui-grid-row">
-      <div class="ui-grid-col-6"></div>
-      <div class="ui-grid-col-6"></div>
+      <div class="ui-grid-col-8">
+        <p-panel [style]="{'margin-bottom':'20px'}">
+          The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+          Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+          kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+      </p-panel>
+      <p-card >
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+    </p-card>
+
+      </div>
+      <div class="ui-grid-col-4">
+        <p-panel>
+          The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+          Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+          kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+      </p-panel>
+      <p-card>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+    </p-card>
+      </div>
     </div>
   </div>
 </section>
