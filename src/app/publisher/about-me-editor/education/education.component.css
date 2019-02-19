@@ -3,3 +3,11 @@ hr {
   background-color: #e57373;
   height: 10px;
 }
+
+.date { font-weight: bold; font-size: 12px; }
+.institution { font-weight: bold }
+.note { font-weight: bold; font-size: 10px;
+        margin-top: 6px; border-radius: 20px;
+        background-color: #81c784; padding: 10px;
+        margin-bottom: 5px; color: #fff; box-sizing: border-box;
+      }

@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h5>User</h5><hr>
-      <form name="formUser" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form name="formUser" (ngSubmit)="f.form.valid && onSubmitUser()" #f="ngForm" novalidate>
         <div class="form-group">
             <label for="Name">Name</label>
-            <input type="text" class="form-control" name="Name" [(ngModel)]="model.Name"
+            <input type="text" class="form-control" name="Name" [(ngModel)]="modelUser.Name"
              #Name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Name.invalid }" required />
             <div *ngIf="f.submitted && Name.invalid" class="invalid-feedback">
                 <div *ngIf="!!Name.errors.required">Name is required</div>
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <label for="login">Log in</label>
-            <input type="text" class="form-control" name="login" [(ngModel)]="model.login"
+            <input type="text" class="form-control" name="login" [(ngModel)]="modelUser.login"
              #login="ngModel" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }"
              required />
             <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email"
+            <input type="text" class="form-control" name="email" [(ngModel)]="modelUser.email"
              #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
              required email />
             <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password"
+            <input type="password" class="form-control" name="password" [(ngModel)]="modelUser.password"
              #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
              required minlength="6" />
             <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
@@ -46,10 +46,10 @@
         </div>
       </form>
 <br>
-      <!-- div class="col-md-6 offset-md-3">
+      <div class="col-md-6 offset-md-3">
         <h5>Photo</h5><hr>
 
-        <p-toast [style]="{marginTop: '80px'}"></p-toast>
+        <!--p-toast [style]="{marginTop: '80px'}"></p-toast>
 
         <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
           accept="image/*" maxFileSize="1000000">
@@ -59,24 +59,51 @@
 
         </ng-template>
         </p-fileUpload>
-          <div class="col s8 m4 l4">
+          <div-- class="col s8 m4 l4">
             <img src="../../../assets/images/person.jpg"
             class="circle responsive-img">
-          </div>
-      </div -->
+          </div-->
+      </div>
 <br>
+
+<div class="col-md-6 offset-md-3">
+  <h5>Home Page</h5><hr>
+  <form name="formHome" (ngSubmit)="fh.form.valid && onSubmitHome()" #fh="ngForm" novalidate>
+    <div class="form-group">
+        <label for="homePage">Career</label>
+        <input type="text" class="form-control" name="career" [(ngModel)]="modelHome.career"
+          #footerTitle="ngModel"/>
+    </div>
+    <div class="form-group">
+        <label for="homePage">Education</label>
+        <input type="text" class="form-control" name="education" [(ngModel)]="modelHome.education"
+          #footerTitle="ngModel"/>
+    </div>
+    <div class="form-group">
+        <label for="homePage">About me</label>
+        <textarea type="text" class="form-control materialize-textarea" name="aboutMe"
+        [(ngModel)]="modelHome.aboutMe" #footerContent="ngModel"></textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
+
+<br>
+
       <div class="col-md-6 offset-md-3">
         <h5>Content footer</h5><hr>
-        <form name="formFoot" (ngSubmit)="fm.form.valid && onSubmitM()" #fm="ngForm" novalidate>
+        <form name="formFoot" (ngSubmit)="fm.form.valid && onSubmitFooter()" #fm="ngForm" novalidate>
           <div class="form-group">
               <label for="footerTitle">Footer title</label>
-              <input type="text" class="form-control" name="footerTitle" [(ngModel)]="modelM.footerTitle"
+              <input type="text" class="form-control" name="footerTitle" [(ngModel)]="modelFooter.footerTitle"
                #footerTitle="ngModel"/>
           </div>
           <div class="form-group">
               <label for="footerContent">Footer content</label>
               <textarea type="text" class="form-control materialize-textarea" name="footerContent"
-              [(ngModel)]="modelM.footerContent" #footerContent="ngModel"></textarea>
+              [(ngModel)]="modelFooter.footerContent" #footerContent="ngModel"></textarea>
             </div>
             <div class="form-group">
               <button class="btn btn-primary">Save</button>

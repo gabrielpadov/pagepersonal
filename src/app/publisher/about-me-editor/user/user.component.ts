@@ -8,15 +8,21 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class UserComponent implements OnInit {
-  model: any = {};
-  modelM: any = {};
+  modelUser: any = {};
+  modelFooter: any = {};
+  modelHome: any = {};
   uploadedFiles: any;
-  onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+
+  onSubmitUser() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.modelUser));
   }
 
-  onSubmitM() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.modelM));
+  onSubmitFooter() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.modelFooter));
+  }
+
+  onSubmitHome() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.modelHome));
   }
 
   constructor(private messageService: MessageService) {}

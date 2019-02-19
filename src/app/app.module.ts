@@ -61,6 +61,7 @@ import { PostViewComponent } from './publisher/blog-editor/post-view/post-view.c
 import {GrowlModule} from 'primeng/growl';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { DatePipe } from './pipes/date.pipe';
+import { DateMonthPipe } from './pipes/date-month.pipe';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { HttpClientModule } from '@angular/common/http';
 import { SkillsComponent } from './publisher/about-me-editor/skills/skills.component';
@@ -96,6 +97,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     PostEditorComponent,
     PostViewComponent,
     DatePipe,
+    DateMonthPipe,
     SkillsComponent
   ],
   imports: [

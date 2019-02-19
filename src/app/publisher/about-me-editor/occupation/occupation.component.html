@@ -1,3 +1,156 @@
-<p>
-  occupation works!
-</p>
+<section>
+  <h5>Occupation information</h5>
+  <hr>
+  <br>
+  <form [formGroup]="occupationForm" (ngSubmit)="onOccupation(occupationForm.value)">
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+      <div class="ui-grid-row"><!---DATE-->
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-2">
+          <span class="ui-float-label">
+          <p-calendar formControlName="dateStart" view="month" dateFormat="mm/yy"></p-calendar>
+          <label for="float-input">Begin</label></span>
+        </div>
+        <div class="ui-grid-col-4">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+              <span class="ui-float-label">
+              <p-calendar formControlName="dateEnd" view="month" [disabled]="dateDisabled" dateFormat="mm/yy"></p-calendar>
+              <label for="float-input">End</label></span>
+              </div>
+              <div class="ui-grid-col-1"></div>
+            <div class="ui-grid-col-5">
+              <p-checkbox value="" label="Actual" (click)="toogleDateEnd()"
+                formControlName="dateEnd"></p-checkbox>
+            </div>
+          </div>
+        </div>
+      <div class="ui-grid-col-4">
+          <p-message severity="error" text="Date is required"
+            *ngIf="!occupationForm.controls['dateStart'].valid && occupationForm.controls['dateStart'].dirty
+            || !occupationForm.controls['dateEnd'].valid && occupationForm.controls['dateEnd'].dirty">
+          </p-message>
+      </div>
+      </div>
+
+      <div class="ui-grid-row"><!---COMPANY-->
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+                <span class="ui-float-label">
+                <input pInputText type="text" formControlName="company"/>
+                <label for="float-input">Company</label></span>
+              </div>
+            <div class="ui-grid-col-4">
+                <p-message severity="error" text="Company is required"
+                  *ngIf="!occupationForm.controls['company'].valid && occupationForm.controls['company'].dirty">
+                </p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row"><!---SECTOR-->
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+              <span class="ui-float-label">
+              <input pInputText type="text" formControlName="sector"/>
+              <label for="float-input">Sector</label></span>
+            </div>
+          <div class="ui-grid-col-4">
+              <p-message severity="error" text="Sector is required"
+                *ngIf="!occupationForm.controls['sector'].valid && occupationForm.controls['sector'].dirty">
+              </p-message>
+          </div>
+      </div>
+
+      <div class="ui-grid-row"><!---OFFICE-->
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+            <span class="ui-float-label">
+            <input pInputText type="text" formControlName="office"/>
+            <label for="float-input">Office</label></span>
+          </div>
+        <div class="ui-grid-col-4">
+            <p-message severity="error" text="Office is required"
+              *ngIf="!occupationForm.controls['office'].valid && occupationForm.controls['office'].dirty">
+            </p-message>
+        </div>
+      </div>
+
+        <div class="ui-grid-row"><!---DESCRIPTION-->
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+                <span class="ui-float-label">
+                <textarea style="height: 50px;" class="ui-state-default ui-inputtext"
+                  [rows]="5" [cols]="30" pInputTextarea autoResize="true" type="text"
+                  formControlName="description"></textarea>
+                <label for="float-input">Description</label></span>
+            </div>
+        </div>
+
+        <br>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-3">
+                <button pButton class="ui-button-success" type="submit" label="Send" [disabled]="!occupationForm.valid"></button>
+            </div>
+            <div class="ui-grid-col-3">
+                <button pButton type="button" (click)="occupationForm.reset()" label="Clear" ></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+        </div>
+          <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+              Form Submitted
+              <br>
+              {{diagnostic}}
+          </div>
+  </div>
+
+  </form>
+
+</section>
+
+<div class="divider"></div>
+
+<section>
+
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-12" *ngIf="listOccupation">
+        <h6>Occupation</h6><hr>
+        <p-card *ngFor="let e of listOccupation"
+        [style]="{'margin-top': '10px', 'background-color':'#fce4ec'}">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2 date">
+                {{ e.dateStart | formatDateMonth }} -
+                {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
+              </div>
+
+            <div class="ui-grid-col-10 company">{{ e.company }}</div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-10">{{ e.sector }}</div>
+          </div><hr>
+          <div class="ui-grid-row">
+
+            <div class="ui-grid-col-4">{{ e.office }}</div>
+
+            <div class="ui-grid-col-8 note">{{ e.description }}</div>
+        </div>
+          <p-footer>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                <button pButton type="button" label="Delete" class="ui-button-rounded  ui-button-danger"
+                  iconPos="left" icon="pi pi-times" (click)=deleteOccupation(e.id)>
+                </button>
+              </div>
+            </div>
+          </p-footer>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p-growl [value]="msgs"></p-growl>
