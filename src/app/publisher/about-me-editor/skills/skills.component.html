@@ -1,3 +1,4 @@
+<section>
 <h3>
   Skills
 </h3>
@@ -26,11 +27,29 @@
     </div>
 </form>
 <br>
-<hr>
 
-<ul class="collection with-header" *ngFor="let item of listSkills">
-  <li class="collection-header"><h4>{{ item.title }}</h4></li>
-  <li class="collection-item" *ngFor="let s of item.skills">{{ s }}</li>
-</ul>
+<div class="divider"></div>
 
+<section>
+<h6>Occupation</h6><hr>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-4" *ngFor="let item of listSkills">
+
+      <div class="card red lighten-2 z-depth-5">
+          <div class="card-content white-text">
+            <span class="card-title"><b>{{ item.title }}</b></span>
+            <p *ngFor="let s of item.skills">
+              <i class="tiny material-icons">chevron_right</i>
+              {{ s }}
+            </p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+</section>
 <p-growl [value]="msgs"></p-growl>

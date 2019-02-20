@@ -15,12 +15,12 @@ export class SkillsComponent implements OnInit {
   constructor(private messageService: MessageService) {
     this.listSkills = [
       {
-        title: 'a',
-        skills: ['a', 'b', 'c']
+        title: 'Abcdf',
+        skills: ['a', 'b', 'csssssssss dds']
       },
       {
-        title: 'b',
-        skills: ['c', 'e', 'c']
+        title: 'Bhahahahnd ddddd',
+        skills: ['c', 'e', 'c', 'aaaaaaaaaaaa']
       }
     ];
    }
@@ -42,6 +42,10 @@ export class SkillsComponent implements OnInit {
 
   clear() {
     this.messageService.clear();
+  }
+
+  deleteSkill() {
+    this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Record deleted!'});
   }
 
 }
