@@ -1,6 +1,5 @@
 import { BlogService } from './blog.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../about-me/login/auth.service';
 import { Post } from '../datasource/post';
 
 @Component({
@@ -12,21 +11,16 @@ export class BlogComponent implements OnInit {
 
   modalPost: Post;
   showBlog = true;
-  liberateEdit = false;
   display = false;
   listPost: object [];
   listLabel: object [];
 
-  constructor(private authService: AuthService, private blogService: BlogService) {
+  constructor(private blogService: BlogService) {
     this.listPost = blogService.getList();
     this.listLabel = blogService.getListLabel();
   }
 
-  ngOnInit() {
-   // this.authService.liberateEdit.subscribe(
-   //   showUp => this.liberateEdit = showUp
-  //  );
-  }
+  ngOnInit() { }
 
   toggleShowBlog() {
     this.showBlog = !this.showBlog;

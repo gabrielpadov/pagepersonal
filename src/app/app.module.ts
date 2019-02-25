@@ -11,12 +11,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './about-me/login/login.component';
-import { AuthService } from './about-me/login/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
-import { AboutMeGuard } from './guards/aboutMe.guard';
-import { FormComponent } from './about-me/form/form.component';
+import { PublisherGuard } from './guards/publisher.guard';
 import { ContactComponent } from './contact/contact.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { SocialMediaService } from './social-media/social-media.service';
@@ -70,6 +67,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
 import {CheckboxModule} from 'primeng/checkbox';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -78,8 +76,6 @@ import {CheckboxModule} from 'primeng/checkbox';
     HomeComponent,
     AboutMeComponent,
     PagenotfoundComponent,
-    LoginComponent,
-    FormComponent,
     ContactComponent,
     SocialMediaComponent,
     FeedComponent,
@@ -143,7 +139,7 @@ import {CheckboxModule} from 'primeng/checkbox';
   providers: [
     AuthService,
     AuthGuard,
-    AboutMeGuard,
+    PublisherGuard,
     SocialMediaService,
     BlogService,
     ConfirmationService,

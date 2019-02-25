@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publisher.component.css']
 })
 export class PublisherComponent implements OnInit {
+  authService: any;
+  liberateEdit = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.authService.liberateEdit.subscribe(
+    showUp => this.liberateEdit = showUp
+    );
   }
 
 }

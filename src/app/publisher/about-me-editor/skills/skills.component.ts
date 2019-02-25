@@ -44,7 +44,8 @@ export class SkillsComponent implements OnInit {
     this.messageService.clear();
   }
 
-  deleteSkill() {
+  deleteSkill(id) {
+    console.log(id);
     this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Record deleted!'});
   }
 

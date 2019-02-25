@@ -1,7 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import {MaterializeAction} from 'angular2-materialize';
-import { AuthService } from './login/auth.service';
-import { User } from '../datasource/user';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about-me',
@@ -10,27 +7,9 @@ import { User } from '../datasource/user';
 })
 export class AboutMeComponent implements OnInit {
 
-  private user: User = new User();
+  constructor() { }
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
-
-  modalActions = new EventEmitter<string|MaterializeAction>();
-  openModal() {
-    this.modalActions.emit({action:"modal",params:['open']});
-  }
-  closeModal() {
-    this.modalActions.emit({action:"modal",params:['close']});
-  }
-
-  login(){
-    this.closeModal();
-    // console.log(this.user);
-    this.authService.login(this.user);
-  }
-
+  ngOnInit() { }
 
 }
 
