@@ -1,1 +1,43 @@
 
+hr {
+  color: #e57373;
+  background-color: #e57373;
+  height: 10px;
+}
+
+.position-name{margin-bottom: 0;
+  position: relative;
+}
+
+img:hover{
+-webkit-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-o-transform: scale(1.1);
+-ms-transform: scale(1.1);
+transform: scale(1.1);
+}
+
+i { margin-right: 8px; }
+
+.card-content {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.titleCard {
+  font-size: 12px !important;
+  line-height: 1.0 !important;
+}
+
+.textCard {
+  font-size: 10px !important;
+  padding: 12px !important;
+}
+
+.date { font-weight: bold; font-size: 12px; }
+.company .institution { font-weight: bold; }
+.note { font-weight: bold; font-size: 10px;
+        margin-top: 6px; border-radius: 20px; padding: 10px;
+        margin-bottom: 5px; box-sizing: border-box;
+      }
+

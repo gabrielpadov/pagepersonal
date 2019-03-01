@@ -34,7 +34,9 @@
 <div class="divider"></div>
 
 <section>
+
   <ul class="collection">
+
     <li class="collection-item avatar" *ngFor="let m of listMedias">
       <a class="tooltipped" data-position="bottom" data-tooltip="Test!" target="_blank" href="https://{{ m.link }}">
         <i class="small fa fa-{{ m.media }} left"></i></a>
@@ -44,6 +46,7 @@
       </div>
     </li>
   </ul>
+
 </section>
 
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
-import { toast } from 'angular2-materialize';
+// import { toast } from 'angular2-materialize';
 
 @Injectable()
 
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     if (this.authService.usuarioAutenticado()) { return true; }
 
     this.router.navigate(['']);
-    toast('user without authentication', 4000);
+   // toast('user without authentication', 4000);
     return false;
   }
 }

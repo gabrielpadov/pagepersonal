@@ -15,11 +15,12 @@ export class AuthService {
   constructor(private router: Router) { }
 
   login(user: User) {
-    if ( user.name === 'root' && user.password === '123') {
+    if ( user.name === 'root' && user.password === '123' ) {
       this.userAuth = true;
       this.liberateEdit.emit(true);
       this.router.navigate(['publisher']);
       toast('Great!', 4000);
+      return true;
     } else {
       this.userAuth = false;
       this.liberateEdit.emit(false);

@@ -8,11 +8,7 @@ export class AppService {
    constructor() { }
 
 
-  getListMedias() {
-   
-  }
+  getListMedias() { }
 
-  getAddMedias(media: any) {
-    
-  }
+  getAddMedias(media: any) { }
 }

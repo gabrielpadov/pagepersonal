@@ -21,8 +21,12 @@ export class SkillsComponent implements OnInit {
       {
         title: 'Bhahahahnd ddddd',
         skills: ['c', 'e', 'c', 'aaaaaaaaaaaa']
-      }
-    ];
+      },
+    {
+      title: 'Framework',
+      skills: ['Bootstrap', 'PrimeNG', 'Materialize CSS']
+    }
+  ];
    }
 
   ngOnInit() {
