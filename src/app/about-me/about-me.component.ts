@@ -35,10 +35,11 @@ export class AboutMeComponent implements OnInit {
     ];
 
     listEducation: any = [
-      {'id': '0', 'institution': 'Lorem ipsum dolor',
+      {'id': '0', 'institution': 'Centro Federal de Educação Tecnológica de Minas Gerais',
       'dateStart': '06/02/2017', 'dateEnd': '',
-      'course': 'Duis maximus suscipit nisi', 'description': 'suscipit nisi photograph',
-      'note': 'Vestibulum placerat posuere urna vel scelerisque. Lorem ipsum dolor sit' },
+      'course': 'Engenharia de Computação', 'description': 'suscipit nisi photograph',
+      // tslint:disable-next-line:max-line-length
+      'note': '04/2014 - 03/2017: Bolsista de extensão - projeto Cefast Baja SAE. Vestibulum placerat posuere urna vel scelerisque. Lorem ipsum dolor sit amet' },
       {'id': '1', 'institution': 'Lorem ipsum dolor Lorem ipsum dolor',
       'dateStart': '06/02/2015', 'dateEnd': '06/02/2016',
       'course': 'Duis maximus suscipit nisi', 'description': 'Lorem ipsum dolor suscipit nisi photograph',

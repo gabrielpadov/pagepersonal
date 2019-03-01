@@ -16,9 +16,11 @@
               <br>
             <h6><i class="fas fa-address-card fa-2x"></i><b>{{ career }}</b></h6>
             <h6><i class="fas fa-envelope fa-2x"></i>{{ email }}</h6>
-              <br>
-              <div class="divider"></div>
-              <br>
+
+            <br>
+            <div class="divider"></div>
+            <br>
+
             <h6><i class="fas fa-info fa-2x"></i>Interests</h6><hr>
             <div *ngFor="let l of listInterests" class=" blue darken-1 chip white-text">{{ l }}</div>
 
@@ -48,23 +50,22 @@
               <div class="col s12 m12 l12">
                 <h6><i class="fas fa-graduation-cap fa-2x"></i>Education</h6><hr>
                 <p-card *ngFor="let e of listEducation"
-                [style]="{'margin-top': '10px', 'background-color':'#fce4ec'}">
+                  [style]="{'margin-top': '10px', 'background-color':'#fce4ec'}">
                   <div class="ui-grid-row">
-                    <div class="ui-grid-col-4 date">
+                    <div class="ui-grid-col-12 institution">{{ e.institution }}</div>
+                    <div class="ui-grid-col-3 date">
                         {{ e.dateStart | formatDateMonth }} -
                         {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
                       </div>
-
-                    <div class="ui-grid-col-8 institution">{{ e.institution }}</div>
+                      <div class="ui-grid-col-8 course">{{ e.course }}</div>
                   </div>
                   <div class="ui-grid-row">
                       <div class="ui-grid-col-4"></div>
-                    <div class="ui-grid-col-8">{{ e.course }}</div>
+                    <div class="ui-grid-col-8">{{ e.description }}</div>
+                    <div class="ui-grid-col-12">
+                      <p class="note"><i class="fas fa-comment"></i>{{ e.note }}</p>
+                    </div>
                   </div>
-
-                    <p>{{ e.description }}</p>
-                    <p class="note">{{ e.note }}</p>
-
                 </p-card>
               </div>
 
@@ -78,13 +79,13 @@
                   [style]="{'margin-top': '10px', 'background-color':'#c5e1a5'}">
 
                     <div class="ui-grid-row">
-                      <div class="ui-grid-col-4 date">{{ c.conclusion | formatDateMonth }}</div>
+                      <div class="ui-grid-col-2 date">{{ c.conclusion | formatDateMonth }}</div>
 
-                      <div class="ui-grid-col-8 institution">{{ c.institution }}</div>
+                      <div class="ui-grid-col-10 course">{{ c.course }}</div>
                     </div>
-                      <p>{{ c.course }}</p>
+                      <p class="institution center-align">{{ c.institution }}</p>
 
-                      <p class="note">{{ c.note }}</p>
+                      <p class="note" *ngIf="c.note"><i class="fas fa-comment"></i>{{ c.note }}</p>
 
                   </p-card>
                 </div>
@@ -96,22 +97,19 @@
                 <p-card *ngFor="let e of listOccupation"
                   [style]="{'margin-top': '10px', 'background-color':'#bbdefb'}">
                     <div class="ui-grid-row">
-                      <div class="ui-grid-col-2 date">
+                      <div class="ui-grid-col-3 date">
                           {{ e.dateStart | formatDateMonth }} -
                           {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
                         </div>
 
-                      <div class="ui-grid-col-10 company">{{ e.company }}</div>
+                      <div class="ui-grid-col-9 company">{{ e.company }}</div>
+                      <div class="ui-grid-col-9 offset-col-2 sector">{{ e.sector }}</div>
                     </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-2"></div>
-                      <div class="ui-grid-col-10">{{ e.sector }}</div>
-                    </div><hr>
-                    <div class="ui-grid-row">
 
-                      <div class="ui-grid-col-4">{{ e.office }}</div>
+                    <div class="ui-grid-row">
+                      <div class="ui-grid-col-12"><i class="fas fa-user-tie fa-2x"></i>{{ e.office }}</div>
 
-                      <div class="ui-grid-col-8 note">{{ e.description }}</div>
+                      <div class="ui-grid-col-12 note">{{ e.description }}</div>
                   </div>
                 </p-card>
               </div>
