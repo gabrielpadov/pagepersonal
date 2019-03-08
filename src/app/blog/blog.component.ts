@@ -14,10 +14,12 @@ export class BlogComponent implements OnInit {
   display = false;
   listPost: object [];
   listLabel: object [];
+  listLink: object [];
 
   constructor(private blogService: BlogService) {
-    this.listPost = blogService.getList();
+    this.listPost = blogService.getListPost();
     this.listLabel = blogService.getListLabel();
+    this.listLink = blogService.getListLink();
   }
 
   ngOnInit() { }

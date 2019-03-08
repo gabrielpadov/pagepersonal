@@ -217,7 +217,7 @@
 
             <p>{{ e.description }}</p>
 
-            <p class="note">{{ e.note }}</p>
+            <p class="note" *ngIf="e.note"><i class="fas fa-comment"></i>{{ e.note }}</p>
 
           <p-footer>
             <div class="ui-grid-row">
@@ -243,7 +243,7 @@
           </div>
             <p>{{ c.course }}</p>
 
-            <p class="note">{{ c.note }}</p>
+            <p class="note" *ngIf="c.note"><i class="fas fa-comment"></i>{{ c.note }}</p>
 
           <p-footer>
             <div class="ui-grid-row">

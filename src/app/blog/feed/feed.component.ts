@@ -10,6 +10,7 @@ export class FeedComponent implements OnInit {
 
   @Input() posts: any[];
   @Input() labels: any;
+  @Input() links: any;
   @Output() showPost = new EventEmitter();
   auxPost: any[];
   aux: any;

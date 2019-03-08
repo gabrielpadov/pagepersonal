@@ -29,6 +29,7 @@ export class PostViewComponent implements OnInit {
 
   reciverEdit() {
     this.showEdit();
+    this.updatePost = new Post;
   }
 
   showDialog() {
@@ -65,6 +66,7 @@ export class PostViewComponent implements OnInit {
   }
 
   postNew() {
+    this.updatePost = null;
     this.showEdit();
   }
 

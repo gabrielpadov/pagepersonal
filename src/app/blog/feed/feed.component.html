@@ -3,8 +3,8 @@
 <hr><hr><hr>
 
 <div *ngIf="labels">
-<a class="chip" (click)="filterLabel('Recent')">Recent</a>
-<a class="chip"  *ngFor="let l of labels" (click)="filterLabel(l.label);">
+<a class="chip sizeChip teal accent-4" (click)="filterLabel('Recent')">Recent</a>
+<a class="chip sizeChip teal accent-3" *ngFor="let l of labels" (click)="filterLabel(l.label);">
   {{ l.label }}</a>
 </div>
 
@@ -15,3 +15,10 @@
   </p-card>
   <br>
 </a>
+
+<hr>
+<h6>external links</h6>
+<hr><hr><hr>
+<div *ngIf="links" class="collection">
+    <a *ngFor="let l of links" target="_blank" href="{{ l.link }}" class="collection-item">{{ l.name }}</a>
+</div>

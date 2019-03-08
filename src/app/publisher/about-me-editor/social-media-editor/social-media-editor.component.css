@@ -1,1 +1,6 @@
 button {margin-right: 2.5px;}
+hr {
+  color: #e57373;
+  background-color: #e57373;
+  height: 10px;
+}

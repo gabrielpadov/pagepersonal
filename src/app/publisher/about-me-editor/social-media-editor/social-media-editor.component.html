@@ -1,52 +1,56 @@
 
 <section>
-  <p-card header="Add social media">
-    <form #socialMedia="ngForm" (ngSubmit)="save(socialMedia); socialMedia.reset()" >
-      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid"
-      style="margin: 10px 0px">
-      <div class="ui-grid-row">
+  <h5>Add social media</h5>
+  <hr>
+  <br>
 
-        <div class="ui-grid-col-8">
-        <span class="ui-float-label">
-          <input id="link" size="60" type="url" pInputText name="link" ngModel required>
-          <label for="float-input">Link</label>
-        </span>
+    <form #socialMedia="ngForm" (ngSubmit)="save(socialMedia); socialMedia.reset()" >
+      <div class="row">
+        <div class="col 8">
+          <span class="ui-float-label">
+            <input id="link" size="60" type="url" pInputText name="link" ngModel required>
+            <label for="float-input">Link</label>
+          </span>
         </div>
-        <div class="ui-grid-col-4">
+        <div class="col 4">
           <div class="ui-inputgroup" style="margin-left: 5px;">
             <p-dropdown [options]="medias" name="media" ngModel required [autoWidth]="false" ></p-dropdown>
           </div>
         </div>
-        <div class="ui-grid-col-2"></div>
       </div>
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-2">
+
+      <div class="row">
+        <div class="col 3">
           <button pButton type="submit" [disabled]="!socialMedia.valid"
           label="Add" icon="pi pi-plus"></button>
         </div>
       </div>
 
-      </div>
-    </form>
-  </p-card>
+</form>
+
 </section>
 
 <div class="divider"></div>
 
 <section>
 
+  <div class="row">
+    <div class="col s12 m8 l8">
+
   <ul class="collection">
 
-    <li class="collection-item avatar" *ngFor="let m of listMedias">
-      <a class="tooltipped" data-position="bottom" data-tooltip="Test!" target="_blank" href="https://{{ m.link }}">
-        <i class="small fa fa-{{ m.media }} left"></i></a>
-        <p>{{ m.link }}</p>
+    <li class="collection-item avatar" *ngFor="let m of listMedia">
+      <a target="_blank" href="{{ m.link }}">
+        <i class="small fa fa-{{ m.media }} left"></i>
+        <p>{{ m.link }}</p></a>
       <div class="secondary-content">
-        <button pButton type="button" class="ui-button-danger" icon="pi pi-times" label="delete"></button>
+        <button pButton type="button" class="ui-button-danger"
+        icon="pi pi-times" label="delete" (click)="delete(m.id)"></button>
       </div>
     </li>
   </ul>
-
+  </div>
+  </div>
 </section>
 
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

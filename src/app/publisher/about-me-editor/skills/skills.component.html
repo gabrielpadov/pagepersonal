@@ -1,6 +1,6 @@
 <section>
 
-<h3>Skill</h3><hr>
+<h5>Skill</h5><hr>
 
 <form #skill="ngForm" (ngSubmit)="updateSkills(skill); skill.reset();">
 <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
@@ -33,29 +33,24 @@
 <section>
 <h6>Skills</h6><hr>
 
-<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+<div class="row">
 
-  <div class="ui-grid-row">
-    <div class="ui-grid-col-4" *ngFor="let item of listSkills">
-
-      <div class="card blue lighten-2 z-depth-5">
-        <div class="card-content">
-          <span class="card-title"><b>{{ item.title }}</b></span>
+  <div class="col s6 m3 l3" *ngFor="let item of listSkills">
+      <div class="card yellow accent-4 z-depth-2">
+        <div class="card-content textCard">
+          <span class="card-title titleCard"><b>{{ item.title }}</b></span>
           <p *ngFor="let s of item.skills">
-            <i class="tiny material-icons">chevron_right</i>
-            {{ s }}
-          </p>
-          <div class="card-action">
+            <i class="fas fa-wrench"></i>{{ s }}</p>
+        </div>
+        <div class="card-action">
           <button pButton type="button" icon="pi pi-times"
-            class="ui-button-rounded ui-button-danger right"
+            class="ui-button-rounded ui-button-danger" label="Delete"
             (click)="deleteSkill(item.id)">
           </button>
-          </div>
         </div>
       </div>
-
-    </div>
   </div>
+
 </div>
 
 </section>

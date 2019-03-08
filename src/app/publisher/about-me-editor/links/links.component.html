@@ -1,0 +1,45 @@
+<section>
+  <h5>Add links</h5>
+  <hr>
+  <br>
+  <div class="row">
+    <form #links="ngForm" (ngSubmit)="save(links); links.reset()" >
+
+      <div class="col s12 m6 l6">
+        <span class="ui-float-label">
+          <input type="url" pInputText name="link" ngModel required>
+          <label for="float-input">Link</label>
+        </span>
+        <span class="ui-float-label">
+          <input type="url" pInputText name="name" ngModel required>
+          <label for="float-input">Name</label>
+        </span>
+        <div class="row">
+          <div class="col s3 m3 l3">
+            <button pButton type="submit" [disabled]="!links.valid"
+              label="Add" icon="pi pi-plus"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+      <div class="col s6 m6 l6">
+        <div *ngIf="listLink" class="collection">
+          <div *ngFor="let l of listLink" class="collection-item">
+              <p>{{ l.name }}</p>
+          <a  target="_blank" href="{{ l.link }}" >
+            <p>{{ l.link }}</p>
+          </a>
+          <br>
+              <button pButton type="button" class="ui-button-danger"
+                icon="pi pi-times" label="delete" (click)="delete(l.id)">
+              </button>
+        </div>
+        </div>
+      </div>
+
+  </div>
+  </section>
+
+  <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+  <p-growl [value]="msgs"></p-growl>

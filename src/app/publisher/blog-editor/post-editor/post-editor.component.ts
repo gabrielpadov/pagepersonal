@@ -18,9 +18,6 @@ export class PostEditorComponent implements OnInit {
   labels: string[];
   suggestions: string[] = [];
 
-   // tslint:disable-next-line:member-ordering
-  text1 = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
-  text2: string;
   msgs: Message[] = [];
   show = true;
   date: Date;
@@ -34,7 +31,8 @@ export class PostEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.updatePost) {
+    // console.log(this.updatePost);
+    if (this.updatePost != null) {
       this.toggleButton();
       this.date = this.updatePost.date;
     }

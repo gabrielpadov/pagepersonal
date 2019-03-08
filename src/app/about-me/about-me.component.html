@@ -63,7 +63,7 @@
                       <div class="ui-grid-col-4"></div>
                     <div class="ui-grid-col-8">{{ e.description }}</div>
                     <div class="ui-grid-col-12">
-                      <p class="note"><i class="fas fa-comment"></i>{{ e.note }}</p>
+                      <p class="note" *ngIf="e.note"><i class="fas fa-comment"></i>{{ e.note }}</p>
                     </div>
                   </div>
                 </p-card>

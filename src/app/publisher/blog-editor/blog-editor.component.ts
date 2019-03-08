@@ -12,7 +12,7 @@ export class BlogEditorComponent implements OnInit {
   postList: Post [];
 
   constructor(publisherService: PublisherService) {
-    this.postList = publisherService.getList(); }
+    this.postList = publisherService.getListPost(); }
 
   ngOnInit() {
   }

@@ -3,10 +3,18 @@ hr {
   background-color: #e57373;
   height: 10px;
 }
-.date { font-weight: bold; font-size: 12px; }
-.company { font-weight: bold }
-.note { font-weight: bold; font-size: 10px;
-        margin-top: 6px; border-radius: 20px;
-        background-color: #81c784; padding: 10px;
-        margin-bottom: 5px; color: #fff; box-sizing: border-box;
+
+
+.date { font-weight: bold; font-size: 12px;
+  border-radius: 20px; padding: 10px;
+  box-sizing: border-box; text-align: center;
+  background-color: #ffffff;
+ }
+.sector { font-size: 10px;  padding-left: 30px; margin-bottom: 5px; }
+.company { font-size: 16px; margin-bottom: 5px; padding-left: 10px; font-weight: bold;}
+.institution { font-size: 16px; margin-bottom: 5px; }
+.course { font-size: 14px; font-weight: bold; padding: 10px; }
+.note { font-weight: bold; font-size: 12px;
+        margin-top: 6px; border-radius: 20px; padding: 10px;
+        margin-bottom: 5px; box-sizing: border-box;
       }

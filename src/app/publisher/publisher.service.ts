@@ -8,14 +8,14 @@ import { SocialMedia } from '../datasource/social-media';
 })
 export class PublisherService {
 
-  listMedias: any = [
-    {id: 1, media: 'instagram', link: 'www.instagram.com'},
-    {id: 2, media: 'facebook', link: 'www.facebook.com'}
+  listMedia: any = [
+    {id: 1, media: 'instagram', link: 'https://www.instagram.com'},
+    {id: 2, media: 'facebook', link: 'https://www.facebook.com'}
   ];
 
-  list: any = [
+  listPost: any = [
     // tslint:disable-next-line:max-line-length
-    {'id': '1', 'title': 'Lorem ipsum dolor sit amet', 'date': '01/01/2019', 'preview': 'Vestibulum placeratVestibulum placerat posuere urna vel scelerisque.', 'label': [ 'music'] },
+    {'id': '1', 'title': 'Lorem ipsum dolor sit amet', 'date': '01/01/2019', 'preview': ' scelerisque.', 'label': [ 'music'], 'content': '<p>Lorem ipsum dolor sit amet<br>Vestibulum placeratVestibulum placerat posuere urna vel scelerisque.Lorem ipsum dolor sit amstibulum placerat Vestibulum placerat posuere urna vel scelerisque.</p>' },
     {'id': '2', 'title': 'Lorem ipsum dolor', 'date': '06/02/2019', 'preview': 'Duis maximus suscipit nisi', 'label': [ 'photograph'] },
     // tslint:disable-next-line:max-line-length
     {'id': '3', 'title': 'Vestibulum placerat posuere urna vel scelerisque.', 'date': '21/02/2019', 'preview': '', 'label': [ 'dev', 'music'] },
@@ -46,16 +46,29 @@ export class PublisherService {
 
   listLabels: string[] = ['literature', 'photograph', 'verse', 'dev', 'music' ];
 
+  listLink: any = [
+    { id: '1', link: 'https://angular.io/', name: 'Angular' },
+    { id: '2', link: 'https://www.typescriptlang.org/', name: 'Typescript' },
+    { id: '3', link: 'https://www.primefaces.org/primeng/#/', name: 'PrimeNG' }
+  ];
+
   // constructor(private http: Http) { }
   constructor () {}
 
-  getListMedias() {
-    return this.listMedias;
+  getListMedia() {
+    return this.listMedia;
   }
 
-  getAddMedias(media: any) {
+  getAddMedia(media: any) {
 
-    this.listMedias.push({ link: media.value.link, media: media.value.media });
+    this.listMedia.push({ link: media.value.link, media: media.value.media });
+
+    return true;
+  }
+
+  getAddLink(link: any) {
+
+    this.listLink.push({ link: link.value.link, name: link.value.name, id: '99' });
 
     return true;
   }
@@ -73,15 +86,29 @@ export class PublisherService {
      //             .then(data => { return data; });
   }
 
+  getListLink() {
+    return this.listLink;
+  }
 
-  getList() {
-    return this.list;
+  getListPost() {
+    return this.listPost;
+  }
+
+  setDeleteMedia(id) {
+    console.log(id);
+    this.listMedia.pop();
+    // console.log(this.listMedia);
+    return true;
+  }
+
+  setDeleteLink(id) {
+    console.log(id);
+    this.listLink.pop();
+    return true;
   }
 
   setDeletePost(id) {
     console.log(id);
-    this.listMedias.pop();
-    console.log(this.listMedias);
     return true;
   }
 }

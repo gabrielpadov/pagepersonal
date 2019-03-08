@@ -68,6 +68,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {CaptchaModule} from 'primeng/captcha';
 import {CheckboxModule} from 'primeng/checkbox';
 import { AuthService } from './auth.service';
+import { LinksComponent } from './publisher/about-me-editor/links/links.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AuthService } from './auth.service';
     PostViewComponent,
     DatePipe,
     DateMonthPipe,
-    SkillsComponent
+    SkillsComponent,
+    LinksComponent
   ],
   imports: [
     BrowserModule,

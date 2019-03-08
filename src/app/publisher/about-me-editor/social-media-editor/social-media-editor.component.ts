@@ -15,14 +15,14 @@ import {NgForm} from '@angular/forms';
 export class SocialMediaEditorComponent implements OnInit {
 
   medias: SelectItem[];
-  listMedias: any = [];
+  listMedia: any = [];
   msgs: Message[] = [];
 
   constructor(private publisherService: PublisherService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService) {
 
-      this.listMedias = this.publisherService.getListMedias();
+      this.listMedia = this.publisherService.getListMedia();
 
       this.medias = [
         {label: 'Select Media', value: null},
@@ -47,7 +47,7 @@ save(selectedMedia: NgForm) {
 
   console.log(selectedMedia.value);
 
-  if (this.publisherService.getAddMedias(selectedMedia)) {
+  if (this.publisherService.getAddMedia(selectedMedia)) {
     this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Successful addition'});
   } else {
     this.messageService.add({severity: 'error', summary: 'Service Message', detail: 'Have empty fields'});
@@ -61,7 +61,7 @@ delete(id) {
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
-          this.publisherService.setDeletePost(id);
+          this.publisherService.setDeleteMedia(id);
           this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Record deleted'}];
       },
       reject: () => {

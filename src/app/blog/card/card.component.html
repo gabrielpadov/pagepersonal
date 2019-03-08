@@ -1,46 +1,49 @@
 <h3 *ngIf="!posts">no posts!</h3>
-<div class="ui-g">
-    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
-    <div class="ui-g-12 ui-md-4 ui-lg-4">
+<div class="row">
+    <div class="col s12 m4 l4"></div>
+    <div class="col s12 m4 l4">
         <ngb-pagination *ngIf="posts" [collectionSize]="posts.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
     </div>
-    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+    <div class="col s12 m4 l4"></div>
 </div>
 
-<div class="p-grid" *ngIf="posts">
+<div class="row" *ngIf="posts">
 
-    <div class="p-col-12 p-md-4 p-lg-4" *ngFor="let post of posts | slice: pageSize | slice: 0:itemsPerPage" >
+    <div class="col s12 m4 l4" *ngFor="let post of posts | slice: pageSize | slice: 0:itemsPerPage" >
 
     <div class="card sticky-action" >
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="./../../../assets/images/book.jpg">
       </div>
       <div class="card-content">
-        <span class="flow-text card-title activator grey-text text-darken-4">{{ post.title | slice:0:50 }}{{ post.title.length >= 50 ? '...' : '' }}
-          <i class="material-icons right">more_vert</i></span>
+          <strong>{{ post.date }}</strong>
+        <span class="card-title activator grey-text text-darken-4">{{ post.title | slice:0:50 }}{{ post.title.length >= 50 ? '...' : '' }}
+          <i class="material-icons right tooltipped" data-position="right" data-tooltip="Preview">
+            more_vert</i>
+        </span>
           <br>
-          <p>{{ post.date }}</p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{ post.title }}
           <i class="material-icons right">close</i></span>
         <p>{{ post.id }} - {{ post.preview }}</p>
+        <div *ngFor="let l of post.label" class="sizeChip chip teal accent-3">
+            {{ l }}
+        </div>
       </div>
       <div class="card-action">
-          <button pButton type="button" label="Open" class="btnBlog ui-button-raised" (click)="viewPost(post)"></button>
-          <br>
-            <div *ngFor="let l of post.label" class="chip">{{ l }}</div>
-        </div>
+        <a (click)="viewPost(post)" class="waves-effect waves-light btn-small">Open</a>
+      </div>
     </div>
 
   </div>
 </div>
 
-<div class="ui-g">
-    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
-    <div class="ui-g-12 ui-md-4 ui-lg-4">
+<div class="row">
+    <div class="col s12 m4 l4"></div>
+    <div class="col s12 m4 l4">
         <ngb-pagination [collectionSize]="posts.length" #numaPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
         <!--pre><span class="float-md-left">Page: {{ currentPage }} / {{numaPages.pageCount}} Found items: {{ itemsPerPage }} / {{ posts.length }}</span></pre-->
     </div>
-    <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+    <div class="col s12 m4 l4"></div>
 </div>
