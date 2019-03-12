@@ -1,6 +1,7 @@
 <div class="container">
 
-  <h3 class="first">Edit post!</h3>
+  <h3 *ngIf="show" class="first">New post!</h3>
+  <h3 *ngIf="!show" class="first">Edit post!</h3>
 
   <hr>
 

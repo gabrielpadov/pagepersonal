@@ -1,20 +1,9 @@
-/*
-.box{
-	margin-top: 20px;
-	width:75%;
-	margin-left: auto ;
-    margin-right: auto ;
-    height: 400px;
-}
+.blog-post{	margin-top:20px; font-size: 14px !important; }
 
-.blog-post{
-	margin-top:20px;
-	float:left;
-}
-.blog-heading{
-	font-size: 36px;
-	margin-bottom:20px;
-}
-.sidebar{
-	float:right;
-}*/
+.blog-preview{ font-style: italic; font-size: 16px !important; }
+
+time { font-size: 14px !important; font-weight: bold; }
+
+.blog-footer{ margin-top: 40px; margin-bottom: 20px; }
+
+hr { color: #e57373; background-color: #e57373; height: 4px; }

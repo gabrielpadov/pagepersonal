@@ -1,14 +1,29 @@
-<section *ngIf="post">
-<article>
-  <header>
-    <h3>{{ post.title }}</h3>
+<!---section *ngIf="post">
+<article class="box">
+  <header class="blog-heading" >
+    <h4>{{ post.title }}</h4>
     <p>Published: <time pubdate="pubdate">{{ post.date }}</time></p>
   </header>
   <div class="divider"></div>
-  <p>{{ post.preview }}</p>
+  <p class="blog-preview">{{ post.preview }}</p>
   <div class="divider"></div>
-  <footer>
-    <p class="chip" *ngFor="let l of post.label">{{ l }}</p>
-  </footer>
+  <div class="blog-post" [innerHTML]="post.content"></div>
+  <div class="blog-footer">
+    <div class="chip teal accent-3" *ngFor="let l of post.label">{{ l }}</div>
+  </div>
 </article>
-</section>
+</section--> 
+
+<div class="row">
+  <div class="col s12 m12 l12 left-align">
+    <h4>{{ post.title }}</h4>
+    <p>Published: <time pubdate="pubdate">{{ post.date }}</time></p>
+    <hr>
+    <p class="blog-preview">{{ post.preview }}</p>
+    <hr>
+    <div class="blog-post" [innerHTML]="post.content"></div>
+    <div class="blog-footer">
+      <div class="chip teal accent-3" *ngFor="let l of post.label">{{ l }}</div>
+    </div>
+  </div>
+</div>

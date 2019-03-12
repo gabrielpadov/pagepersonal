@@ -69,6 +69,8 @@ import {CaptchaModule} from 'primeng/captcha';
 import {CheckboxModule} from 'primeng/checkbox';
 import { AuthService } from './auth.service';
 import { LinksComponent } from './publisher/about-me-editor/links/links.component';
+import {SidebarModule} from 'primeng/sidebar';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -134,7 +136,9 @@ import { LinksComponent } from './publisher/about-me-editor/links/links.componen
     FileUploadModule,
     CalendarModule,
     CaptchaModule,
-    CheckboxModule
+    CheckboxModule,
+    SidebarModule,
+    ScrollPanelModule
   ],
   exports:
   [CardComponent],
