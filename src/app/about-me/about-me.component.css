@@ -20,7 +20,7 @@ transform: scale(1.1);
 i { margin-right: 8px; }
 
 .card-content {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
 }
 
@@ -34,17 +34,11 @@ i { margin-right: 8px; }
   padding: 12px !important;
 }
 
-.date { font-weight: bold; font-size: 12px;
-  border-radius: 20px; padding: 10px;
-  box-sizing: border-box; text-align: center;
-  background-color: #ffffff;
- }
-.sector { font-size: 10px;  padding-left: 30px; margin-bottom: 5px; }
-.company { font-size: 16px; margin-bottom: 5px; padding-left: 10px; font-weight: bold;}
-.institution { font-size: 16px; margin-bottom: 5px; }
-.course { font-size: 14px; font-weight: bold; padding: 10px; }
-.note { font-weight: bold; font-size: 12px;
-        margin-top: 6px; border-radius: 20px; padding: 10px;
-        margin-bottom: 5px; box-sizing: border-box;
-      }
+.date { font-weight: bold; font-size: 12px; margin-bottom: 5px;}
+.sector { font-size: 10px; margin-bottom: 2.5px;}
+.company { font-size: 16px; margin-bottom: 5px;}
+.institution { font-size: 14px; margin-bottom: 5px; }
+.course { font-size: 16px; margin-bottom: 5px; }
+.note { font-weight: bold; font-size: 12px; margin-top: 10px;  }
+
 

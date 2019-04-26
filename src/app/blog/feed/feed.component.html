@@ -1,6 +1,6 @@
-<hr>
-<h6>other posts</h6>
-<hr><hr><hr>
+
+<h5>other posts</h5>
+
 
 <div *ngIf="labels">
 <a class="chip sizeChip teal accent-4" (click)="filterLabel('Recent')">Recent</a>
@@ -16,9 +16,8 @@
   <br>
 </a>
 
-<hr>
-<h6>external links</h6>
-<hr><hr><hr>
+<h5>external links</h5>
+
 <div *ngIf="links" class="collection">
     <a *ngFor="let l of links" target="_blank" href="{{ l.link }}" class="collection-item">{{ l.name }}</a>
 </div>

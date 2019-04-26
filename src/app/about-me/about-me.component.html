@@ -32,7 +32,7 @@
             <div class="row">
 
                 <div class="col s12 m6 l6" *ngFor="let item of listSkills">
-                    <div class="card yellow accent-4 z-depth-2">
+                    <div class="card green accent-4 z-depth-2">
                       <div class="card-content textCard">
                         <span class="card-title titleCard"><b>{{ item.title }}</b></span>
                         <p *ngFor="let s of item.skills">
@@ -44,30 +44,28 @@
             </div>
           </div>
 
-
           <div class="col s12 m8 l8">
             <div class="row">
-              <div class="col s12 m12 l12">
-                <h6><i class="fas fa-graduation-cap fa-2x"></i>Education</h6><hr>
-                <p-card *ngFor="let e of listEducation"
-                  [style]="{'margin-top': '10px', 'background-color':'#fce4ec'}">
-                  <div class="ui-grid-row">
-                    <div class="ui-grid-col-12 institution">{{ e.institution }}</div>
-                    <div class="ui-grid-col-4 date">
-                        {{ e.dateStart | formatDateMonth }} -
-                        {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
+
+                <div class="col s12 m12 l12">
+                    <h6><i class="fas fa-graduation-cap fa-2x"></i>Education</h6><hr>
+                    <p-card *ngFor="let e of listEducation"
+                      [style]="{'margin-top': '10px', 'padding': '5px'}">
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-12 date">
+                              {{ e.dateStart | formatDateMonth }} -
+                              {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
+                            </div>
+
+                        <div class="ui-grid-col-12 course">{{ e.course }}</div>
+                        <div class="ui-grid-col-12 institution">{{ e.institution }}</div>
+                        <div class="ui-grid-col-12 sector">{{ e.description }}</div>
+                        <div class="ui-grid-col-12">
+                          <p class="note" *ngIf="e.note">{{ e.note }}</p>
+                        </div>
                       </div>
-                      <div class="ui-grid-col-8 course">{{ e.course }}</div>
+                    </p-card>
                   </div>
-                  <div class="ui-grid-row">
-                      <div class="ui-grid-col-4"></div>
-                    <div class="ui-grid-col-8">{{ e.description }}</div>
-                    <div class="ui-grid-col-12">
-                      <p class="note" *ngIf="e.note"><i class="fas fa-comment"></i>{{ e.note }}</p>
-                    </div>
-                  </div>
-                </p-card>
-              </div>
 
               <div class="col s12 m12 l12" style="margin-bottom: 20px"></div>
 
@@ -76,16 +74,15 @@
                     Complementary courses and other activities
                   </h6><hr>
                   <p-card  *ngFor="let c of listComplement"
-                  [style]="{'margin-top': '10px', 'background-color':'#c5e1a5'}">
+                  [style]="{'margin-top': '10px'}">
 
                     <div class="ui-grid-row">
-                      <div class="ui-grid-col-2 date">{{ c.conclusion | formatDateMonth }}</div>
-
+                      <div class="ui-grid-col-12 date">{{ c.conclusion | formatDateMonth }}</div>
                       <div class="ui-grid-col-10 course">{{ c.course }}</div>
                     </div>
-                      <p class="institution center-align">{{ c.institution }}</p>
+                      <p class="institution">{{ c.institution }}</p>
 
-                      <p class="note" *ngIf="c.note"><i class="fas fa-comment"></i>{{ c.note }}</p>
+                      <p class="note" *ngIf="c.note">{{ c.note }}</p>
 
                   </p-card>
                 </div>
@@ -95,13 +92,12 @@
               <div class="col s12 m12 l12">
                 <h6><i class="fas fa-briefcase fa-2x"></i>Occupation</h6><hr>
                 <p-card *ngFor="let e of listOccupation"
-                  [style]="{'margin-top': '10px', 'background-color':'#bbdefb'}">
+                  [style]="{'margin-top': '10px'}">
                     <div class="ui-grid-row">
-                      <div class="ui-grid-col-3 date">
+                      <div class="ui-grid-col-12 date">
                           {{ e.dateStart | formatDateMonth }} -
                           {{ e.dateEnd == '' ? 'Actual' : e.dateEnd | formatDateMonth }}
-                        </div>
-
+                      </div>
                       <div class="ui-grid-col-9 company">{{ e.company }}</div>
                       <div class="ui-grid-col-9 offset-col-2 sector">{{ e.sector }}</div>
                     </div>
